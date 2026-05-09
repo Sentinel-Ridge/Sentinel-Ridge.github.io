@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sentinel Ridge Technologies | Technology Consulting & Operational Excellence</title>
+  <meta name="description" content="Sentinel Ridge Technologies is a technology and management consulting firm specializing in operational analytics, software development, logistics optimization, and strategic advisory for commercial and government clients." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a227;
+      --gold-light: #e0bc50;
+      --gold-dark: #9a7a10;
+      --navy: #0b0e17;
+      --navy-mid: #111827;
+      --navy-light: #1a2238;
+      --steel: #8a9bb0;
+      --steel-light: #b4c3d6;
+      --white: #f0f4f8;
+      --text-dim: #6b7a8d;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 3px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 72px;
+      background: rgba(11, 14, 23, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+      transition: background 0.3s;
+      overflow: visible;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      align-self: flex-start;
+      padding-top: 6px;
+    }
+
+    .nav-logo img {
+      height: 100px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--steel-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold) !important;
+      border: 1px solid var(--gold);
+      padding: 0.45rem 1.2rem;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      border: 0;
+      background: transparent;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--steel-light);
+      transition: 0.3s;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('./Imagery/Banner Photo No Logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      filter: brightness(0.5);
+      will-change: transform;
+      animation: kenBurns 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes kenBurns {
+      0%   { transform: scale(1.0)  translate( 0%,    0%); }
+      30%  { transform: scale(1.02) translate(-0.5%,  0.3%); }
+      65%  { transform: scale(1.02) translate( 0.4%,  0.4%); }
+      100% { transform: scale(1.01) translate( 0.5%, -0.2%); }
+    }
+
+    /* Canvas — particles + data streams */
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Dot-grid overlay (reveals from right — tech-map feel) */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background-image: radial-gradient(circle, rgba(201,162,39,0.11) 1px, transparent 1px);
+      background-size: 34px 34px;
+      -webkit-mask-image: linear-gradient(105deg, transparent 25%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.65) 100%);
+      mask-image:         linear-gradient(105deg, transparent 25%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.65) 100%);
+      animation: gridPulse 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes gridPulse {
+      0%   { opacity: 0.55; }
+      100% { opacity: 1; }
+    }
+
+    /* Light rays */
+    .hero-rays {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: conic-gradient(
+        from 195deg at 78% 12%,
+        transparent 0deg,
+        rgba(201,162,39,0.045) 4deg,
+        transparent 9deg,
+        rgba(201,162,39,0.03) 13deg,
+        transparent 19deg,
+        rgba(201,162,39,0.055) 24deg,
+        transparent 30deg,
+        rgba(201,162,39,0.025) 36deg,
+        transparent 44deg
+      );
+      animation: raysBreath 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes raysBreath {
+      0%   { opacity: 0.5;  transform: rotate(-0.6deg); }
+      100% { opacity: 1;    transform: rotate( 0.6deg); }
+    }
+
+    /* Atmospheric fog */
+    .hero-fog {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 130% 45% at 25% 85%, rgba(18,30,55,0.55) 0%, transparent 65%),
+        radial-gradient(ellipse  90% 35% at 72% 92%, rgba(12,20,40,0.45) 0%, transparent 60%);
+      animation: fogDrift 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes fogDrift {
+      0%   { transform: translateX(0%)   scaleX(1.00); }
+      100% { transform: translateX(1.5%) scaleX(1.02); }
+    }
+
+    /* Two staggered scan lines */
+    .hero-scan {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    /* Primary scan — gold, 2.2s */
+    .hero-scan::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,162,39,0.22) 40%, rgba(201,162,39,0.22) 60%, transparent);
+      animation: scanLine 2.2s linear infinite;
+    }
+
+    /* Secondary scan — blue-steel, 1.6s, offset */
+    .hero-scan::before {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(100,160,220,0.12) 40%, rgba(100,160,220,0.12) 60%, transparent);
+      animation: scanLine 1.6s linear infinite 0.8s;
+    }
+
+    @keyframes scanLine {
+      0%   { top: -2px;  opacity: 0; }
+      3%   { opacity: 1; }
+      97%  { opacity: 1; }
+      100% { top: 100%;  opacity: 0; }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(
+        105deg,
+        rgba(11,14,23,0.92) 0%,
+        rgba(11,14,23,0.6) 50%,
+        rgba(11,14,23,0.1) 100%
+      );
+    }
+
+    /* Live data readout (top-right) */
+    .hud-readout {
+      position: absolute;
+      top: 5.5rem;
+      right: 3rem;
+      z-index: 3;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      opacity: 0;
+      animation: hudSlide 0.5s ease 0.3s forwards;
+    }
+
+    .hud-readout-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+
+    .hud-readout-key {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(138,155,176,0.4);
+      width: 5.5rem;
+      text-align: right;
+    }
+
+    .hud-readout-val {
+      font-family: 'Rajdhani', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: rgba(201,162,39,0.55);
+      font-variant-numeric: tabular-nums;
+      min-width: 3.5rem;
+    }
+
+    .hud-readout-val.status-ok { color: rgba(80,210,130,0.6); }
+
+    .hud-readout-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(201,162,39,0.12);
+      margin: 0.2rem 0;
+    }
+
+    /* Blinking cursor */
+    .hud-cursor {
+      display: inline-block;
+      width: 5px;
+      height: 0.65em;
+      background: rgba(201,162,39,0.55);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: cursorBlink 0.7s step-end infinite;
+    }
+
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* HUD data overlays (right-center) */
+    .hero-hud {
+      position: absolute;
+      right: 3rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .hud-block {
+      opacity: 0;
+      animation: hudSlide 0.5s ease forwards;
+    }
+
+    .hud-block:nth-child(1) { animation-delay: 0.9s; }
+    .hud-block:nth-child(2) { animation-delay: 1.5s; }
+    .hud-block:nth-child(3) { animation-delay: 2.1s; }
+
+    @keyframes hudSlide {
+      from { opacity: 0; transform: translateX(10px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .hud-tag {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(201,162,39,0.5);
+      margin-bottom: 0.3rem;
+    }
+
+    .hud-lines {
+      border-left: 1px solid rgba(201,162,39,0.3);
+      padding-left: 0.6rem;
+    }
+
+    .hud-line {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(180,195,214,0.0);  /* start invisible — typewriter fills it */
+      line-height: 1.6;
+      transition: color 0.1s;
+    }
+
+    .hud-line.typed { color: rgba(180,195,214,0.55); }
+
+    /* Corner coords */
+    .hud-coord {
+      position: absolute;
+      z-index: 3;
+      pointer-events: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: rgba(201,162,39,0.3);
+    }
+
+    .hud-coord-tl { top: 5.5rem; left: 2rem; animation: hudSlide 0.5s ease 0.2s both; }
+    .hud-coord-br { bottom: 4.5rem; right: 2rem; text-align: right; animation: hudSlide 0.5s ease 0.4s both; }
+
+    @media (max-width: 900px) {
+      .hero-hud, .hud-coord, .hud-readout { display: none; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      padding-top: 72px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+      max-width: 700px;
+    }
+
+    .hero h1 .accent { color: var(--gold); }
+
+    .hero-tagline {
+      font-size: 1.15rem;
+      color: var(--steel-light);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(240, 244, 248, 0.35);
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 3rem;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      gap: 3rem;
+    }
+
+    .section-panel {
+      margin-top: 4rem;
+      padding: 2.5rem;
+      border: 1px solid rgba(201,162,39,0.2);
+      background: rgba(201,162,39,0.04);
+      border-radius: 2px;
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .focus-copy {
+      color: var(--steel);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .focus-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    .focus-item {
+      padding: 0.85rem;
+      background: rgba(11,14,23,0.7);
+      border: 1px solid rgba(138,155,176,0.15);
+      border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--steel-light);
+      text-transform: uppercase;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .hero-stat .number {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .hero-stat .label {
+      font-size: 0.75rem;
+      color: var(--steel);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--steel-light);
+      max-width: 600px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── DIVIDER ── */
+    .gold-rule {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1.5rem 0;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--navy-mid);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+
+    .about-image-wrap img {
+      width: 100%;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .about-image-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--navy);
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      padding: 1.25rem 1.5rem;
+      border-radius: 2px;
+    }
+
+    .about-image-badge .badge-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+
+    .about-image-badge .badge-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .about-text p {
+      color: var(--steel-light);
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: rgba(201, 162, 39, 0.05);
+      border-left: 2px solid var(--gold);
+      border-radius: 0 2px 2px 0;
+    }
+
+    .pillar-icon {
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+      color: var(--gold);
+      display: flex;
+    }
+    .pillar-icon svg { width: 1.25rem; height: 1.25rem; }
+
+    .pillar-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+
+    .pillar-desc {
+      font-size: 0.85rem;
+      color: var(--steel-light);
+      line-height: 1.5;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--navy);
+    }
+
+    .services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      align-items: end;
+    }
+
+    .services-intro {
+      font-size: 1rem;
+      color: var(--steel-light);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(201, 162, 39, 0.1);
+    }
+
+    .service-card {
+      background: var(--navy-mid);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover { background: var(--navy-light); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-number {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--gold-dark);
+      margin-bottom: 1.25rem;
+    }
+
+    .service-icon {
+      margin-bottom: 1.25rem;
+      display: block;
+      color: var(--gold);
+    }
+    .service-icon svg { width: 1.75rem; height: 1.75rem; }
+
+    .service-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+      color: var(--white);
+    }
+
+    .service-desc {
+      font-size: 0.875rem;
+      color: var(--steel);
+      line-height: 1.7;
+    }
+
+    /* ── SBIR PHASES ── */
+    #approach {
+      background: var(--navy-mid);
+    }
+
+    .phases-wrap {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .phases-wrap::before {
+      content: '';
+      position: absolute;
+      top: 2.25rem;
+      left: calc(16.66% + 0.5rem);
+      right: calc(16.66% + 0.5rem);
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), rgba(201,162,39,0.3), var(--gold));
+      z-index: 0;
+    }
+
+    .phase-card {
+      position: relative;
+      z-index: 1;
+      padding: 0 2rem 2.5rem;
+      text-align: center;
+    }
+
+    .phase-number {
+      width: 4.5rem;
+      height: 4.5rem;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      background: var(--navy-mid);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .phase-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .phase-funding {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .phase-desc {
+      font-size: 0.85rem;
+      color: var(--steel);
+      line-height: 1.7;
+    }
+
+    /* ── WHY US ── */
+    #why {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #why::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('./Imagery/Banner Photo.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.06;
+    }
+
+    .why-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .why-card {
+      padding: 2rem;
+      border: 1px solid rgba(201, 162, 39, 0.15);
+      border-radius: 2px;
+      background: rgba(17, 24, 39, 0.7);
+      transition: border-color 0.3s;
+    }
+
+    .why-card:hover { border-color: rgba(201, 162, 39, 0.45); }
+
+    .why-card-icon {
+      margin-bottom: 1rem;
+      color: var(--gold);
+      display: flex;
+    }
+    .why-card-icon svg { width: 1.5rem; height: 1.5rem; }
+
+    .why-card-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .why-card-desc {
+      font-size: 0.875rem;
+      color: var(--steel);
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--navy-mid);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      padding-top: 0.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: rgba(201, 162, 39, 0.1);
+      border: 1px solid rgba(201, 162, 39, 0.25);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+    .contact-detail-icon svg { width: 1rem; height: 1rem; }
+
+    .contact-detail-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-detail-value {
+      font-size: 0.9rem;
+      color: var(--steel-light);
+    }
+
+    .contact-detail-value a {
+      color: inherit;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--steel);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(26, 34, 56, 0.8);
+      border: 1px solid rgba(138, 155, 176, 0.2);
+      color: var(--white);
+      padding: 0.75rem 1rem;
+      border-radius: 2px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group select option { background: var(--navy-mid); }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    .form-status {
+      min-height: 1.4rem;
+      font-size: 0.82rem;
+      color: var(--steel-light);
+    }
+
+    .form-status.success {
+      color: #8ad4a0;
+    }
+
+    .form-status.error {
+      color: #ffb4a8;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(201, 162, 39, 0.15);
+      padding: 3rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer-logo img { height: 54px; width: auto; opacity: 0.75; }
+
+    .footer-brand-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--steel-light);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      /* Shrink nav logo so it doesn't dominate the mobile bar */
+      .nav-logo img {
+        height: 60px;
+      }
+
+      /* Hero: auto height, flex column so stats sit naturally below content */
+      .hero {
+        height: auto;
+        min-height: 100svh;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 0;
+      }
+
+      .hero-bg {
+        background-size: cover;
+        background-position: center center;
+      }
+
+      /* Content block: centered, clears the fixed nav at top */
+      .hero-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 6rem 1.5rem 2rem;
+        width: 100%;
+      }
+
+      /* Eyebrow: smaller text, allow graceful wrapping */
+      .hero-eyebrow {
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        flex-wrap: wrap;
+        row-gap: 0.25rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Clamp h1 tighter for narrow screens */
+      .hero h1 {
+        font-size: clamp(2.2rem, 11vw, 3.5rem);
+        margin-bottom: 1rem;
+      }
+
+      .hero-tagline {
+        font-size: 1rem;
+        margin-bottom: 1.75rem;
+      }
+
+      /* Stack buttons full-width */
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn-primary,
+      .hero-actions .btn-ghost {
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Stats: horizontal strip pinned to bottom of hero */
+      .hero-stats {
+        position: static;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0;
+        padding: 0;
+        background: rgba(11, 14, 23, 0.75);
+        border-top: 1px solid rgba(201, 162, 39, 0.15);
+        backdrop-filter: blur(8px);
+      }
+
+      .hero-stat {
+        flex: 1;
+        padding: 1rem 0.75rem;
+        text-align: center;
+        border-right: 1px solid rgba(201, 162, 39, 0.12);
+      }
+
+      .hero-stat:last-child { border-right: none; }
+
+      .hero-stat .number {
+        font-size: 1.3rem;
+      }
+
+      .hero-stat .label {
+        font-size: 0.55rem;
+        letter-spacing: 0.06em;
+      }
+
+      /* Rest of page */
+      .about-grid,
+      .services-header,
+      .contact-grid,
+      .focus-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .focus-list { grid-template-columns: 1fr; gap: 1rem; }
+
+      .about-image-badge { right: 0; bottom: -1rem; }
+
+      .services-grid { grid-template-columns: 1fr; gap: 0; }
+
+      .phases-wrap { grid-template-columns: 1fr; }
+      .phases-wrap::before { display: none; }
+
+      .why-grid { grid-template-columns: 1fr; }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      .section-panel { padding: 2rem 1.5rem; }
+
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+
+    /* Extra-small phones */
+    @media (max-width: 480px) {
+      .hero-eyebrow::before { display: none; }
+
+      .hero-stats { flex-wrap: wrap; }
+
+      .hero-stat {
+        flex: 1 1 33%;
+        padding: 0.85rem 0.5rem;
+      }
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile nav drawer */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: rgba(11,14,23,0.98);
+      border-bottom: 1px solid rgba(201,162,39,0.2);
+      z-index: 99;
+      padding: 1.5rem 2rem;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .mobile-nav.open { display: flex; }
+
+    .mobile-nav a {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--steel-light);
+      text-decoration: none;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .hero-bg,
+      .hero-grid,
+      .hero-rays,
+      .hero-fog,
+      .hero-scan,
+      .hud-block,
+      .hud-readout,
+      .hud-coord,
+      .fade-in {
+        animation: none !important;
+        transform: none !important;
+      }
+
+      .fade-in {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav aria-label="Primary">
+    <a href="#hero" class="nav-logo">
+      <img src="./Imagery/SentinelRidge-primary-transparent.png" alt="Sentinel Ridge" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button
+      type="button"
+      class="hamburger"
+      id="navToggle"
+      aria-controls="mobileNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#approach">Approach</a>
+    <a href="#why">Why Us</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <main>
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero-bg"></div>
+    <canvas class="hero-particles" id="heroCanvas"></canvas>
+    <div class="hero-grid"></div>
+    <div class="hero-rays"></div>
+    <div class="hero-fog"></div>
+    <div class="hero-scan"></div>
+    <div class="hero-overlay"></div>
+
+    <!-- HUD overlays -->
+    <div class="hud-coord hud-coord-br">SENTINEL RIDGE TECHNOLOGIES · CONSULTING · ANALYTICS · SOFTWARE</div>
+
+    <!-- Live data readout panel -->
+    <div class="hud-readout" aria-hidden="true">
+      <div class="hud-readout-row">
+        <span class="hud-readout-key">PRACTICE AREAS</span>
+        <span class="hud-readout-val">5</span>
+      </div>
+      <div class="hud-readout-row">
+        <span class="hud-readout-key">YRS EXPERIENCE</span>
+        <span class="hud-readout-val">20+</span>
+      </div>
+      <div class="hud-readout-row">
+        <span class="hud-readout-key">CLIENT FOCUS</span>
+        <span class="hud-readout-val">COM + GOV</span>
+      </div>
+      <div class="hud-readout-divider"></div>
+      <div class="hud-readout-row">
+        <span class="hud-readout-key">STATUS</span>
+        <span class="hud-readout-val status-ok">ACTIVE<span class="hud-cursor"></span></span>
+      </div>
+    </div>
+
+    <div class="hero-hud" aria-hidden="true">
+      <div class="hud-block">
+        <div class="hud-tag">Operational</div>
+        <div class="hud-lines">
+          <div class="hud-line">Mission</div>
+          <div class="hud-line">Focus</div>
+          <div class="hud-line">Deliver</div>
+        </div>
+      </div>
+      <div class="hud-block">
+        <div class="hud-tag">Intelligence</div>
+        <div class="hud-lines">
+          <div class="hud-line">Data</div>
+          <div class="hud-line">Insight</div>
+          <div class="hud-line">Decision</div>
+          <div class="hud-line">Advantage</div>
+        </div>
+      </div>
+      <div class="hud-block">
+        <div class="hud-tag">Doctrine</div>
+        <div class="hud-lines">
+          <div class="hud-line">Clarity</div>
+          <div class="hud-line">Informs</div>
+          <div class="hud-line">Readiness</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Technology Consulting · Operational Analytics · Software Development</div>
+      <h1>
+        Finding <span class="accent">Clarity</span><br />
+        in Complexity
+      </h1>
+      <p class="hero-tagline">
+        Sentinel Ridge is a technology and management consulting firm helping organizations
+        cut through complexity — with data-driven strategy, custom software, and operational
+        expertise that delivers measurable results.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Start a Conversation</a>
+        <a href="#services" class="btn-ghost">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="number">20+</span>
+        <span class="label">Years of Experience</span>
+      </div>
+      <div class="hero-stat">
+        <span class="number">5</span>
+        <span class="label">Core Practice Areas</span>
+      </div>
+      <div class="hero-stat">
+        <span class="number">End-to-End</span>
+        <span class="label">Strategy Through Delivery</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrap fade-in">
+          <img src="./Imagery/Banner Photo.png" alt="Sentinel Ridge Technologies" />
+          <div class="about-image-badge">
+            <div class="badge-title">Consulting & Management</div>
+            <div class="badge-text">20+ Years</div>
+          </div>
+        </div>
+        <div class="about-text fade-in">
+          <div class="section-label">About Sentinel Ridge</div>
+          <h2 class="section-title">Technology Expertise Grounded in Operations</h2>
+          <div class="gold-rule"></div>
+          <p>
+            Sentinel Ridge Technologies was built by practitioners — people who have run supply chains,
+            built data systems, managed logistics networks, and led technology initiatives from the ground up.
+            We don't just advise. We understand the problem because we've lived it.
+          </p>
+          <p>
+            Whether your challenge is modernizing operations, extracting insight from fragmented data,
+            building custom software, or entering new markets — we bring the strategy and the technical
+            depth to see it through.
+          </p>
+          <div class="pillars">
+            <div class="pillar">
+              <span class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+              <div>
+                <div class="pillar-title">Outcome-Focused Engagements</div>
+                <div class="pillar-desc">We define success before we start. Every engagement is scoped around measurable outcomes, not billable hours.</div>
+              </div>
+            </div>
+            <div class="pillar">
+              <span class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16v-5"/><path d="M11 16V8"/><path d="M15 16v-3"/><path d="M19 16V7"/></svg></span>
+              <div>
+                <div class="pillar-title">Evidence-Based Strategy</div>
+                <div class="pillar-desc">Decisions grounded in your data, your operations, and your market — not generic frameworks or one-size-fits-all playbooks.</div>
+              </div>
+            </div>
+            <div class="pillar">
+              <span class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+              <div>
+                <div class="pillar-title">Built to Be Delivered</div>
+                <div class="pillar-desc">Strategy without execution is just a document. We stay engaged through implementation so recommendations become results.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header">
+        <div class="fade-in">
+          <div class="section-label">What We Do</div>
+          <h2 class="section-title">Services Built Around Real Problems</h2>
+        </div>
+        <p class="services-intro fade-in">
+          From strategy to implementation, Sentinel Ridge delivers across the full spectrum of
+          technology consulting — combining operational experience with technical depth to solve
+          problems that matter to your business.
+        </p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-number">01</div>
+          <span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5C17.9 10 18.5 8.1 18 6a6 6 0 0 0-11.6 2c-.4 2 .2 3.8 1.5 5C8.8 13.8 9 14.4 9 15v1h6v-1c0-.6.2-1.2.6-1.6z"/><path d="M8 21h8"/><path d="M12 21v-6"/></svg></span>
+          <div class="service-title">Technology Consulting</div>
+          <p class="service-desc">
+            Strategic technology advisory for organizations navigating modernization, vendor selection,
+            architecture decisions, and digital transformation. We translate complex technical landscapes
+            into clear, actionable roadmaps.
+          </p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-number">02</div>
+          <span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="6" height="18"/><rect x="9" y="8" width="6" height="13"/><rect x="16" y="13" width="6" height="8"/></svg></span>
+          <div class="service-title">Operational Analytics</div>
+          <p class="service-desc">
+            Turn fragmented operational data into decision-ready insight. We design and implement
+            analytics pipelines, dashboards, and reporting systems that surface what's actually
+            driving performance — and what's holding it back.
+          </p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-number">03</div>
+          <span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="15" y1="9" x2="9" y2="15"/></svg></span>
+          <div class="service-title">Software Development</div>
+          <p class="service-desc">
+            Custom software built to fit your operations — not the other way around. From internal
+            tools and process automation to full-scale applications, we deliver production-ready
+            software with a focus on maintainability and performance.
+          </p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-number">04</div>
+          <span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
+          <div class="service-title">Logistics Optimization</div>
+          <p class="service-desc">
+            Deep expertise in supply chain and logistics operations — from network design and
+            inventory modeling to route optimization and vendor performance analysis. We find
+            efficiency where it counts most.
+          </p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-number">05</div>
+          <span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="4" rx="1"/><rect x="2" y="14" width="6" height="4" rx="1"/><rect x="16" y="14" width="6" height="4" rx="1"/><path d="M12 6v4M12 10H5v4M12 10h7v4"/></svg></span>
+          <div class="service-title">Management Consulting</div>
+          <p class="service-desc">
+            Organizational strategy, process improvement, and change management grounded in
+            operational reality. We help leadership teams align on priorities, restructure workflows,
+            and execute decisions with confidence.
+          </p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-number">06</div>
+          <span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h18"/><path d="M3 11h18"/><path d="M12 2L2 11h20L12 2z"/><line x1="6" y1="11" x2="6" y2="22"/><line x1="10" y1="11" x2="10" y2="22"/><line x1="14" y1="11" x2="14" y2="22"/><line x1="18" y1="11" x2="18" y2="22"/></svg></span>
+          <div class="service-title">Government Contracting & SBIR</div>
+          <p class="service-desc">
+            For companies pursuing federal contracts or SBIR funding, we provide topic analysis,
+            proposal strategy, and compliance guidance — leveraging our operational background
+            to build proposals that are technically credible and competitively positioned.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE ENGAGE -->
+  <section id="approach">
+    <div class="container">
+      <div class="fade-in" style="max-width: 640px;">
+        <div class="section-label">How We Engage</div>
+        <h2 class="section-title">A Process Built for Clarity and Speed</h2>
+        <p class="section-subtitle">
+          Every engagement follows a disciplined process — from understanding the problem to
+          delivering a working solution. We move fast without cutting corners.
+        </p>
+      </div>
+      <div class="phases-wrap">
+        <div class="phase-card fade-in">
+          <div class="phase-number">1</div>
+          <div class="phase-title">Discover</div>
+          <div class="phase-funding">Understand First</div>
+          <p class="phase-desc">
+            We start by deeply understanding your operations, data, and constraints — not by
+            selling a solution. Diagnosis before prescription, every time.
+          </p>
+        </div>
+        <div class="phase-card fade-in">
+          <div class="phase-number">2</div>
+          <div class="phase-title">Design</div>
+          <div class="phase-funding">Strategy + Architecture</div>
+          <p class="phase-desc">
+            We design an approach — whether that's a software architecture, an analytics framework,
+            or an operational playbook — that is practical, scoped, and built to be executed.
+          </p>
+        </div>
+        <div class="phase-card fade-in">
+          <div class="phase-number">3</div>
+          <div class="phase-title">Deliver</div>
+          <div class="phase-funding">Results, Not Reports</div>
+          <p class="phase-desc">
+            We stay engaged through implementation. Our measure of success is working outcomes —
+            deployed software, optimized operations, and teams equipped to sustain what we build.
+          </p>
+        </div>
+      </div>
+
+      <div class="fade-in section-panel">
+        <div class="focus-grid">
+          <div>
+            <div class="section-label" style="margin-bottom: 0.75rem;">Industries & Domains</div>
+            <h3 style="font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Where We Work Best</h3>
+            <p class="focus-copy">
+              Our operator background gives us credibility in domains where data, logistics,
+              and technology intersect — in both commercial and government environments.
+            </p>
+          </div>
+          <ul class="focus-list" aria-label="Focus areas">
+            <li class="focus-item">Supply Chain &amp; Logistics</li>
+            <li class="focus-item">Defense &amp; Government</li>
+            <li class="focus-item">Manufacturing &amp; Operations</li>
+            <li class="focus-item">Data &amp; Analytics Platforms</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="container">
+      <div class="why-inner">
+        <div class="fade-in" style="max-width: 600px; margin: 0 auto; text-align: center; margin-bottom: 3rem;">
+          <div class="section-label" style="justify-content: center;">Why Sentinel Ridge</div>
+          <h2 class="section-title">We've Operated at Every Level</h2>
+          <p class="section-subtitle" style="margin: 0 auto;">
+            We don't just consult — we've run operations, built systems, managed teams,
+            and made the same decisions you're facing now.
+          </p>
+        </div>
+        <div class="why-grid">
+          <div class="why-card fade-in">
+            <div class="why-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+            <div class="why-card-title">Focused Engagements</div>
+            <p class="why-card-desc">
+              We take on work where we can make a real difference. That means fewer clients,
+              deeper engagement, and outcomes we're willing to put our name behind.
+            </p>
+          </div>
+          <div class="why-card fade-in">
+            <div class="why-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+            <div class="why-card-title">Practitioner Credibility</div>
+            <p class="why-card-desc">
+              Our team has hands-on experience in supply chain, logistics, software, and data
+              operations — so our recommendations come from people who've done the work, not just studied it.
+            </p>
+          </div>
+          <div class="why-card fade-in">
+            <div class="why-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="why-card-title">Partner, Not Vendor</div>
+            <p class="why-card-desc">
+              We structure engagements for long-term value. Your success after we leave is the
+              measure of a good engagement — so we build capability, not dependency.
+            </p>
+          </div>
+          <div class="why-card fade-in">
+            <div class="why-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div class="why-card-title">Straight Talk</div>
+            <p class="why-card-desc">
+              We tell you what we actually think — including when an idea won't work or when
+              a simpler solution beats the complex one. Clarity is the service.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info fade-in">
+          <div class="section-label">Get in Touch</div>
+          <h2 class="section-title">Let's Talk About Your Challenge</h2>
+          <div class="gold-rule"></div>
+          <p style="color: var(--steel-light); font-weight: 300; line-height: 1.8; margin-bottom: 2.5rem; font-size: 0.95rem;">
+            Whether you're facing a technology decision, a data problem, an operational bottleneck,
+            or a market you're trying to enter — we're ready to have a direct, honest conversation
+            about whether we're the right fit.
+          </p>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div>
+              <div class="contact-detail-label">Email</div>
+              <div class="contact-detail-value"><a href="mailto:daniel@sentinelridge.tech">daniel@sentinelridge.tech</a></div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8L2 7h20l-6-4z"/></svg></div>
+            <div>
+              <div class="contact-detail-label">Company</div>
+              <div class="contact-detail-value">Sentinel Ridge Technologies LLC</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><polyline points="14 3 14 8 19 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+            <div>
+              <div class="contact-detail-label">Clients</div>
+              <div class="contact-detail-value">Commercial · Government · Defense</div>
+            </div>
+          </div>
+        </div>
+        <div class="fade-in">
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" autocomplete="name" placeholder="Jane Smith" required />
+              </div>
+              <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" autocomplete="organization" placeholder="Acme Technologies" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="jane@acmetech.com" required />
+            </div>
+            <div class="form-group">
+              <label for="interest">Area of Interest</label>
+              <select id="interest" name="interest">
+                <option value="">Select a service area...</option>
+                <option>Technology Consulting</option>
+                <option>Operational Analytics</option>
+                <option>Software Development</option>
+                <option>Logistics Optimization</option>
+                <option>Management Consulting</option>
+                <option>Government Contracting &amp; SBIR</option>
+                <option>General inquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell Us About Your Challenge</label>
+              <textarea id="message" name="message" placeholder="Briefly describe your organization, the problem you're facing, or what you're trying to accomplish..." required></textarea>
+            </div>
+            <p class="form-note">This form opens your email client with a pre-filled message to daniel@sentinelridge.tech.</p>
+            <p class="form-status" id="formStatus" aria-live="polite"></p>
+            <button type="submit" class="btn-primary" style="width: 100%; text-align: center;">Draft Email</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="./Imagery/SentinelRidge-simple-white.png" alt="Sentinel Ridge" />
+        <div>
+          <div class="footer-brand-name">Sentinel Ridge Technologies LLC</div>
+          <div style="font-size:0.72rem; color: var(--text-dim); font-family: 'Rajdhani', sans-serif; letter-spacing: 0.12em;">FINDING CLARITY IN COMPLEXITY</div>
+        </div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 Sentinel Ridge Technologies LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── HERO CANVAS: PARTICLES + DATA STREAMS ──
+    (function() {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const canvas = document.getElementById('heroCanvas');
+      if (!canvas || reduceMotion) return;
+      const ctx = canvas.getContext('2d');
+      let W, H, dusts = [], streams = [], animationFrameId = null;
+
+      function rand(a, b) { return Math.random() * (b - a) + a; }
+      function randInt(a, b) { return Math.floor(rand(a, b + 1)); }
+
+      // ── Floating dust particles (gold, drift upward)
+      function makeDust() {
+        return {
+          x: rand(0, W), y: rand(0, H),
+          r: rand(0.4, 1.5),
+          vx: rand(-0.12, 0.12),
+          vy: rand(-0.45, -0.15),
+          alpha: rand(0.08, 0.5),
+          flicker: rand(0.006, 0.018),
+          fd: 1,
+        };
+      }
+
+      // ── Horizontal data-stream streaks (fast, thin, blue-steel)
+      function makeStream() {
+        const fromRight = Math.random() > 0.5;
+        return {
+          x: fromRight ? W + rand(20, 80) : -rand(20, 80),
+          y: rand(H * 0.15, H * 0.88),
+          w: rand(30, 90),
+          vx: fromRight ? -rand(4, 9) : rand(4, 9),
+          alpha: rand(0.12, 0.28),
+          r: rand(0, 60) / 255,   // colour tint variety
+        };
+      }
+
+      function init() {
+        W = canvas.width  = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+        dusts   = Array.from({ length: Math.floor(W * H / 7000) }, makeDust);
+        streams = Array.from({ length: 18 }, makeStream);
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+
+        // data streams
+        for (const s of streams) {
+          const grad = ctx.createLinearGradient(s.x, 0, s.x + s.w * Math.sign(s.vx) * -1, 0);
+          grad.addColorStop(0, `rgba(${Math.round(100 + s.r*80)},${Math.round(160 + s.r*40)},220,0)`);
+          grad.addColorStop(0.5, `rgba(${Math.round(100 + s.r*80)},${Math.round(160 + s.r*40)},220,${s.alpha})`);
+          grad.addColorStop(1, `rgba(${Math.round(100 + s.r*80)},${Math.round(160 + s.r*40)},220,0)`);
+          ctx.fillStyle = grad;
+          ctx.fillRect(s.x, s.y - 0.5, s.w, 1);
+
+          s.x += s.vx;
+          if (s.x > W + 100 || s.x < -100) Object.assign(s, makeStream());
+        }
+
+        // dust particles
+        for (const p of dusts) {
+          p.alpha += p.flicker * p.fd;
+          if (p.alpha > 0.5 || p.alpha < 0.05) p.fd *= -1;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(205,182,104,${p.alpha})`;
+          ctx.fill();
+
+          p.x += p.vx;  p.y += p.vy;
+          if (p.y < -4)   p.y = H + 4;
+          if (p.x < -4)   p.x = W + 4;
+          if (p.x > W + 4) p.x = -4;
+        }
+
+        animationFrameId = requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', init);
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden && animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+          return;
+        }
+
+        if (!document.hidden && !animationFrameId) {
+          draw();
+        }
+      });
+      init();
+      draw();
+    })();
+
+    // ── TYPEWRITER on HUD lines ──
+    (function() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const lines = document.querySelectorAll('.hud-line');
+      lines.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add('typed');
+        }, 950 + i * 130);
+      });
+    })();
+
+    const navToggle = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('mobileNav');
+
+    function setMobileNavState(isOpen) {
+      mobileNav.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      setMobileNavState(!isOpen);
+    });
+
+    mobileNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMobileNavState(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setMobileNavState(false);
+      }
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Nav background on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.background = window.scrollY > 60
+        ? 'rgba(11,14,23,0.98)'
+        : 'rgba(11,14,23,0.92)';
+    });
+
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (!contactForm.reportValidity()) {
+        formStatus.textContent = 'Please complete the required fields before drafting your email.';
+        formStatus.className = 'form-status error';
+        return;
+      }
+
+      const formData = new FormData(contactForm);
+      const name = (formData.get('name') || '').toString().trim();
+      const company = (formData.get('company') || '').toString().trim();
+      const email = (formData.get('email') || '').toString().trim();
+      const interest = (formData.get('interest') || 'General inquiry').toString().trim();
+      const message = (formData.get('message') || '').toString().trim();
+      const subject = `Sentinel Ridge inquiry: ${interest}`;
+      const body = [
+        `Name: ${name}`,
+        `Company: ${company || 'Not provided'}`,
+        `Email: ${email}`,
+        `Area of Interest: ${interest || 'General inquiry'}`,
+        '',
+        'Mission / Opportunity:',
+        message
+      ].join('\n');
+
+      window.location.href = `mailto:daniel@sentinelridge.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      formStatus.textContent = 'Your email draft is ready. If nothing opened, email daniel@sentinelridge.tech directly.';
+      formStatus.className = 'form-status success';
+    });
+  </script>
+</body>
+</html>
