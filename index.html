@@ -593,6 +593,66 @@
       text-transform: uppercase;
     }
 
+    /* ── LAPTOP / TIGHT DESKTOP ── */
+    @media (max-width: 1400px) and (min-width: 901px) {
+      nav {
+        height: 80px;
+        padding: 0 1.25rem;
+      }
+
+      .nav-logo {
+        align-self: center;
+        padding-top: 0;
+      }
+
+      .nav-logo img {
+        height: 78px;
+      }
+
+      .nav-links {
+        gap: 1.6rem;
+      }
+
+      .nav-links a {
+        font-size: 0.82rem;
+      }
+
+      .nav-cta {
+        padding: 0.4rem 1rem;
+      }
+
+      .hero {
+        min-height: 700px;
+      }
+
+      .hero-content {
+        padding-top: 112px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.2rem, 5.2vw, 4.6rem);
+        max-width: 620px;
+      }
+
+      .hero-tagline {
+        font-size: 1.05rem;
+        max-width: 500px;
+      }
+
+      .hero-stats {
+        bottom: 2rem;
+        gap: 2rem;
+      }
+
+      .hero-stat .number {
+        font-size: 1.65rem;
+      }
+
+      .hero-stat .label {
+        font-size: 0.7rem;
+      }
+    }
+
     /* ── SECTIONS ── */
     section {
       padding: 5rem 2rem;
