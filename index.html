@@ -3,46 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sentinel Ridge Technologies | Helping Small Businesses Win Work & Deliver Well</title>
-  <meta name="description" content="Sentinel Ridge helps small businesses win opportunities and execute with confidence through capture support, delivery leadership, operational clarity, and practical systems." />
+  <title>Sentinel Ridge | Operational Intelligence &amp; Business Operating Systems</title>
+  <meta
+    name="description"
+    content="Sentinel Ridge helps leaders understand how their organizations actually operate before investing in change. Explore Operational Intelligence Reviews, business operating systems, process improvement, AI, PMO, and government delivery."
+  />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <script>
-    window.__sentinelRidgePostHog = {
-      token: "phc_rdEqJrLuLAqLJbaRzWaBXoomGYHToJ3R5LppPHUpQjzm",
-      apiHost: "https://us.i.posthog.com",
-      site: "marketing"
-    };
-
-    window.__initSentinelRidgePostHog = function() {
-      if (!window.posthog || !window.__sentinelRidgePostHog) {
-        return;
-      }
-
-      var config = window.__sentinelRidgePostHog;
-
-      window.posthog.init(config.token, {
-        api_host: config.apiHost,
-        defaults: "2026-01-30",
-        autocapture: false,
-        capture_pageview: false,
-        capture_pageleave: true,
-        loaded: function(client) {
-          client.register({ site: config.site });
-          client.capture("$pageview", {
-            site: config.site,
-            $current_url: window.location.href
-          });
-        }
-      });
-    };
-  </script>
-  <script
-    async
-    src="https://us.i.posthog.com/static/array.js"
-    onload="window.__initSentinelRidgePostHog()"
-  ></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -57,27 +28,29 @@
       --steel-light: #b4c3d6;
       --white: #f0f4f8;
       --text-dim: #6b7a8d;
+      --panel: rgba(17, 24, 39, 0.9);
+      --panel-border: rgba(201, 162, 39, 0.18);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--navy);
+      background: linear-gradient(180deg, #0b0e17 0%, #0d1220 100%);
       color: var(--white);
       line-height: 1.6;
     }
 
+    a { color: inherit; }
+
     a:focus-visible,
     button:focus-visible,
     input:focus-visible,
-    select:focus-visible,
     textarea:focus-visible {
       outline: 2px solid var(--gold-light);
       outline-offset: 3px;
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0;
@@ -139,12 +112,6 @@
       border: 1px solid var(--gold);
       padding: 0.45rem 1.2rem;
       border-radius: 2px;
-      transition: background 0.2s, color 0.2s !important;
-    }
-
-    .nav-cta:hover {
-      background: var(--gold) !important;
-      color: var(--navy) !important;
     }
 
     .hamburger {
@@ -162,17 +129,19 @@
       width: 24px;
       height: 2px;
       background: var(--steel-light);
-      transition: 0.3s;
     }
 
-    /* ── HERO ── */
+    .mobile-nav {
+      display: none;
+    }
+
     .hero {
       position: relative;
-      height: 100vh;
-      min-height: 640px;
+      min-height: calc(100vh - 12px);
       display: flex;
       align-items: center;
       overflow: hidden;
+      padding: 4.25rem 0 1.5rem;
     }
 
     .hero-bg {
@@ -184,26 +153,26 @@
       background-position: center center;
       filter: brightness(0.5);
       will-change: transform;
-      animation: kenBurns 12s ease-in-out infinite alternate;
+      animation: kenBurns 8s ease-in-out infinite alternate;
     }
 
     @keyframes kenBurns {
-      0%   { transform: scale(1.0)  translate( 0%,    0%); }
-      30%  { transform: scale(1.02) translate(-0.5%,  0.3%); }
-      65%  { transform: scale(1.02) translate( 0.4%,  0.4%); }
-      100% { transform: scale(1.01) translate( 0.5%, -0.2%); }
+      0%   { transform: scale(1.0) translate(0%, 0%); }
+      30%  { transform: scale(1.035) translate(-1.1%, 0.7%); }
+      65%  { transform: scale(1.035) translate(0.9%, 0.8%); }
+      100% { transform: scale(1.025) translate(1.2%, -0.5%); }
     }
 
-    /* Canvas — particles + data streams */
     .hero-particles {
       position: absolute;
       inset: 0;
       z-index: 1;
       pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0.9;
     }
 
-    /* Dot-grid overlay (reveals from right — tech-map feel) */
-    .hero-grid {
+    .hero-gridlines {
       position: absolute;
       inset: 0;
       z-index: 1;
@@ -211,16 +180,15 @@
       background-image: radial-gradient(circle, rgba(201,162,39,0.11) 1px, transparent 1px);
       background-size: 34px 34px;
       -webkit-mask-image: linear-gradient(105deg, transparent 25%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.65) 100%);
-      mask-image:         linear-gradient(105deg, transparent 25%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.65) 100%);
-      animation: gridPulse 2.5s ease-in-out infinite alternate;
+      mask-image: linear-gradient(105deg, transparent 25%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.65) 100%);
+      animation: gridPulse 2s ease-in-out infinite alternate;
     }
 
     @keyframes gridPulse {
-      0%   { opacity: 0.55; }
+      0% { opacity: 0.7; }
       100% { opacity: 1; }
     }
 
-    /* Light rays */
     .hero-rays {
       position: absolute;
       inset: 0;
@@ -229,24 +197,23 @@
       background: conic-gradient(
         from 195deg at 78% 12%,
         transparent 0deg,
-        rgba(201,162,39,0.045) 4deg,
+        rgba(201,162,39,0.075) 4deg,
         transparent 9deg,
-        rgba(201,162,39,0.03) 13deg,
+        rgba(201,162,39,0.05) 13deg,
         transparent 19deg,
-        rgba(201,162,39,0.055) 24deg,
+        rgba(201,162,39,0.09) 24deg,
         transparent 30deg,
-        rgba(201,162,39,0.025) 36deg,
+        rgba(201,162,39,0.045) 36deg,
         transparent 44deg
       );
-      animation: raysBreath 4s ease-in-out infinite alternate;
+      animation: raysBreath 3s ease-in-out infinite alternate;
     }
 
     @keyframes raysBreath {
-      0%   { opacity: 0.5;  transform: rotate(-0.6deg); }
-      100% { opacity: 1;    transform: rotate( 0.6deg); }
+      0% { opacity: 0.68; transform: rotate(-0.9deg); }
+      100% { opacity: 1; transform: rotate(0.9deg); }
     }
 
-    /* Atmospheric fog */
     .hero-fog {
       position: absolute;
       inset: 0;
@@ -254,16 +221,15 @@
       pointer-events: none;
       background:
         radial-gradient(ellipse 130% 45% at 25% 85%, rgba(18,30,55,0.55) 0%, transparent 65%),
-        radial-gradient(ellipse  90% 35% at 72% 92%, rgba(12,20,40,0.45) 0%, transparent 60%);
-      animation: fogDrift 8s ease-in-out infinite alternate;
+        radial-gradient(ellipse 90% 35% at 72% 92%, rgba(12,20,40,0.45) 0%, transparent 60%);
+      animation: fogDrift 5.5s ease-in-out infinite alternate;
     }
 
     @keyframes fogDrift {
-      0%   { transform: translateX(0%)   scaleX(1.00); }
+      0% { transform: translateX(0%) scaleX(1.00); }
       100% { transform: translateX(1.5%) scaleX(1.02); }
     }
 
-    /* Two staggered scan lines */
     .hero-scan {
       position: absolute;
       inset: 0;
@@ -272,31 +238,31 @@
       overflow: hidden;
     }
 
-    /* Primary scan — gold, 2.2s */
     .hero-scan::after {
       content: '';
       position: absolute;
-      left: 0; right: 0;
+      left: 0;
+      right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(201,162,39,0.22) 40%, rgba(201,162,39,0.22) 60%, transparent);
-      animation: scanLine 2.2s linear infinite;
+      background: linear-gradient(90deg, transparent, rgba(201,162,39,0.32) 40%, rgba(201,162,39,0.22) 60%, transparent);
+      animation: scanLine 1.6s linear infinite;
     }
 
-    /* Secondary scan — blue-steel, 1.6s, offset */
     .hero-scan::before {
       content: '';
       position: absolute;
-      left: 0; right: 0;
+      left: 0;
+      right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(100,160,220,0.12) 40%, rgba(100,160,220,0.12) 60%, transparent);
-      animation: scanLine 1.6s linear infinite 0.8s;
+      background: linear-gradient(90deg, transparent, rgba(100,160,220,0.18) 40%, rgba(100,160,220,0.12) 60%, transparent);
+      animation: scanLine 1.2s linear infinite 0.45s;
     }
 
     @keyframes scanLine {
-      0%   { top: -2px;  opacity: 0; }
-      3%   { opacity: 1; }
-      97%  { opacity: 1; }
-      100% { top: 100%;  opacity: 0; }
+      0% { top: -2px; opacity: 0; }
+      3% { opacity: 1; }
+      97% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
     }
 
     .hero-overlay {
@@ -311,7 +277,6 @@
       );
     }
 
-    /* Live data readout (top-right) */
     .hud-readout {
       position: absolute;
       top: 5.5rem;
@@ -352,7 +317,7 @@
       min-width: 3.5rem;
     }
 
-    .hud-readout-val.status-ok { color: rgba(80,210,130,0.6); }
+    .hud-readout-val.status-ok { color: rgba(80,210,130,0.72); }
 
     .hud-readout-divider {
       width: 100%;
@@ -361,12 +326,11 @@
       margin: 0.2rem 0;
     }
 
-    /* Blinking cursor */
     .hud-cursor {
       display: inline-block;
       width: 5px;
       height: 0.65em;
-      background: rgba(201,162,39,0.55);
+      background: rgba(201,162,39,0.72);
       margin-left: 2px;
       vertical-align: middle;
       animation: cursorBlink 0.7s step-end infinite;
@@ -374,10 +338,9 @@
 
     @keyframes cursorBlink {
       0%, 100% { opacity: 1; }
-      50%       { opacity: 0; }
+      50% { opacity: 0; }
     }
 
-    /* HUD data overlays (right-center) */
     .hero-hud {
       position: absolute;
       right: 3rem;
@@ -401,7 +364,7 @@
 
     @keyframes hudSlide {
       from { opacity: 0; transform: translateX(10px); }
-      to   { opacity: 1; transform: translateX(0); }
+      to { opacity: 1; transform: translateX(0); }
     }
 
     .hud-tag {
@@ -410,7 +373,7 @@
       font-weight: 600;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: rgba(201,162,39,0.5);
+      color: rgba(201,162,39,0.58);
       margin-bottom: 0.3rem;
     }
 
@@ -425,14 +388,13 @@
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(180,195,214,0.0);  /* start invisible — typewriter fills it */
+      color: rgba(180,195,214,0);
       line-height: 1.6;
       transition: color 0.1s;
     }
 
-    .hud-line.typed { color: rgba(180,195,214,0.55); }
+    .hud-line.typed { color: rgba(180,195,214,0.68); }
 
-    /* Corner coords */
     .hud-coord {
       position: absolute;
       z-index: 3;
@@ -441,765 +403,534 @@
       font-size: 0.58rem;
       font-weight: 500;
       letter-spacing: 0.2em;
-      color: rgba(201,162,39,0.3);
+      color: rgba(201,162,39,0.36);
     }
 
-    .hud-coord-tl { top: 5.5rem; left: 2rem; animation: hudSlide 0.5s ease 0.2s both; }
-    .hud-coord-br { bottom: 4.5rem; right: 2rem; text-align: right; animation: hudSlide 0.5s ease 0.4s both; }
+    .hud-coord-br {
+      bottom: 4.5rem;
+      right: 2rem;
+      text-align: right;
+      animation: hudSlide 0.5s ease 0.4s both;
+    }
 
-    @media (max-width: 900px) {
-      .hero-hud, .hud-coord, .hud-readout { display: none; }
+    .hero-shell,
+    .section-shell,
+    .footer-inner {
+      width: min(1180px, calc(100% - 3rem));
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.22fr) minmax(300px, 0.78fr);
+      gap: 1.5rem;
+      align-items: center;
     }
 
     .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      padding-top: 72px;
+      max-width: 760px;
+      padding-left: 2rem;
     }
 
-    .hero-eyebrow {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.25rem;
-      display: flex;
+    .hero-eyebrow,
+    .section-label {
+      display: inline-flex;
       align-items: center;
       gap: 0.75rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.25rem;
     }
 
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 32px;
+    .hero-eyebrow::before,
+    .section-label::before {
+      content: "";
+      width: 34px;
       height: 1px;
       background: var(--gold);
     }
 
-    .hero h1 {
+    h1, h2, h3 {
       font-family: 'Rajdhani', sans-serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: 0.02em;
-      margin-bottom: 1.5rem;
-      max-width: 700px;
+      line-height: 0.98;
+      letter-spacing: -0.02em;
     }
 
-    .hero h1 .accent { color: var(--gold); }
+    h1 {
+      font-size: clamp(2.45rem, 4.9vw, 4.3rem);
+      margin-bottom: 0.85rem;
+      max-width: 600px;
+      text-align: right;
+    }
+
+    .accent { color: var(--gold); }
 
     .hero-tagline {
-      font-size: 1.15rem;
+      font-size: clamp(0.98rem, 1.2vw, 1.08rem);
       color: var(--steel-light);
-      max-width: 520px;
-      margin-bottom: 2.5rem;
-      font-weight: 300;
-      letter-spacing: 0.03em;
+      max-width: 640px;
     }
 
     .hero-actions {
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.15rem;
     }
 
-    .btn-primary {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      background: var(--gold);
-      color: var(--navy);
-      border: none;
-      padding: 0.85rem 2rem;
-      border-radius: 2px;
-      cursor: pointer;
+    .btn-primary,
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.5rem;
       text-decoration: none;
-      display: inline-block;
-      transition: background 0.2s, transform 0.1s;
+      transition: transform 0.2s, background 0.2s, color 0.2s, border-color 0.2s;
     }
 
-    .btn-primary:hover {
-      background: var(--gold-light);
+    .btn-primary:hover,
+    .btn-ghost:hover {
       transform: translateY(-1px);
     }
 
+    .btn-primary {
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid var(--white);
+      border-radius: 16px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
     .btn-ghost {
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      border-radius: 16px;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.9rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      background: transparent;
-      color: var(--white);
-      border: 1px solid rgba(240, 244, 248, 0.35);
-      padding: 0.85rem 2rem;
-      border-radius: 2px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    .hero-stats {
-      position: absolute;
-      bottom: 3rem;
-      left: 0;
-      right: 0;
-      z-index: 2;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      gap: 3rem;
-    }
-
-    .section-panel {
-      margin-top: 4rem;
-      padding: 2.5rem;
-      border: 1px solid rgba(201,162,39,0.2);
-      background: rgba(201,162,39,0.04);
-      border-radius: 2px;
-    }
-
-    .focus-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .focus-copy {
-      color: var(--steel);
-      font-size: 0.9rem;
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    .focus-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      list-style: none;
-    }
-
-    .focus-item {
-      padding: 0.85rem;
-      background: rgba(11,14,23,0.7);
-      border: 1px solid rgba(138,155,176,0.15);
-      border-radius: 2px;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
       color: var(--steel-light);
-      text-transform: uppercase;
+      background: rgba(17, 24, 39, 0.45);
     }
 
-    .hero-stat {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
+    .hero-panel {
+      background: rgba(10, 14, 23, 0.38);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 0;
+      padding: 1.5rem;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.16);
+      backdrop-filter: blur(10px);
     }
 
-    .hero-stat .number {
+    .panel-kicker {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 1.8rem;
+      font-size: 0.76rem;
       font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-    }
-
-    .hero-stat .label {
-      font-size: 0.75rem;
-      color: var(--steel);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
+      color: #8fdcff;
+      margin-bottom: 1.2rem;
     }
 
-    /* ── LAPTOP / TIGHT DESKTOP ── */
-    @media (max-width: 1400px) and (min-width: 901px) {
-      nav {
-        height: 80px;
-        padding: 0 1.25rem;
-      }
-
-      .nav-logo {
-        align-self: center;
-        padding-top: 0;
-      }
-
-      .nav-logo img {
-        height: 78px;
-      }
-
-      .nav-links {
-        gap: 1.6rem;
-      }
-
-      .nav-links a {
-        font-size: 0.82rem;
-      }
-
-      .nav-cta {
-        padding: 0.4rem 1rem;
-      }
-
-      .hero {
-        min-height: 700px;
-      }
-
-      .hero-content {
-        padding-top: 112px;
-      }
-
-      .hero h1 {
-        font-size: clamp(3.2rem, 5.2vw, 4.6rem);
-        max-width: 620px;
-      }
-
-      .hero-tagline {
-        font-size: 1.05rem;
-        max-width: 500px;
-      }
-
-      .hero-stats {
-        bottom: 2rem;
-        gap: 2rem;
-      }
-
-      .hero-stat .number {
-        font-size: 1.65rem;
-      }
-
-      .hero-stat .label {
-        font-size: 0.7rem;
-      }
-    }
-
-    /* ── SECTIONS ── */
-    section {
-      padding: 5rem 2rem;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
+    .signal-list {
+      display: grid;
       gap: 0.75rem;
     }
 
-    .section-label::before {
-      content: '';
+    .signal-item {
+      border-left: 2px solid rgba(201, 162, 39, 0.55);
+      background: rgba(255, 255, 255, 0.025);
+      border-radius: 14px;
+      padding: 0.9rem 1rem 0.9rem 1.1rem;
+    }
+
+    .signal-item strong {
       display: block;
-      width: 24px;
-      height: 1px;
-      background: var(--gold);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.02rem;
+      margin-bottom: 0.18rem;
+    }
+
+    .signal-item span {
+      color: var(--steel-light);
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 6rem 0;
+      position: relative;
     }
 
     .section-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
+      font-size: clamp(2.4rem, 4.4vw, 4.2rem);
+      margin-bottom: 1.2rem;
+      max-width: 900px;
     }
 
     .section-subtitle {
-      font-size: 1.05rem;
       color: var(--steel-light);
-      max-width: 600px;
-      font-weight: 300;
-      line-height: 1.7;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      max-width: 760px;
     }
 
-    /* ── DIVIDER ── */
-    .gold-rule {
-      width: 48px;
-      height: 2px;
-      background: var(--gold);
-      margin: 1.5rem 0;
+    .section-intro {
+      margin-bottom: 2.5rem;
     }
 
-    /* ── ABOUT ── */
-    #about {
-      background: var(--navy-mid);
+    .dark-section {
+      background: linear-gradient(180deg, rgba(11, 14, 23, 0.45), rgba(11, 14, 23, 0.75));
+    }
+
+    .light-panel-section {
+      background: linear-gradient(180deg, rgba(15, 21, 34, 0.95), rgba(18, 27, 44, 0.92));
+    }
+
+    .cream-panel-section {
+      background: linear-gradient(180deg, #111827 0%, #0f1626 100%);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .insight-card,
+    .app-card,
+    .evidence-card,
+    .review-card,
+    .faq-card,
+    .about-card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 22px;
+      padding: 1.5rem;
+    }
+
+    .about-card {
+      margin-top: 2.5rem;
+      border-radius: 0;
+    }
+
+    .insight-num,
+    .evidence-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .insight-card h3,
+    .app-card h3,
+    .evidence-card h3,
+    .review-card h3,
+    .about-card h3 {
+      font-size: 1.55rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .insight-card p,
+    .app-card p,
+    .evidence-card p,
+    .review-card p,
+    .about-card p,
+    .review-promise p,
+    .split-copy p,
+    .definition p,
+    details p {
+      color: var(--steel-light);
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+      padding-top: 2.5rem;
+    }
+
+    .timeline-step {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(201, 162, 39, 0.18);
+      border: 1px solid rgba(201, 162, 39, 0.32);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    .timeline-step strong {
+      display: block;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .quote-panel {
+      background: linear-gradient(180deg, rgba(19, 26, 40, 0.95), rgba(12, 18, 30, 0.95));
+      border: 1px solid var(--panel-border);
+      border-radius: 22px;
+      padding: 2rem;
+    }
+
+    .quote-panel blockquote {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      line-height: 1.15;
+      color: var(--white);
+      border-left: 3px solid var(--gold);
+      padding-left: 1rem;
+    }
+
+    .definition {
+      margin-top: 1.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(201, 162, 39, 0.14);
+      border-radius: 18px;
+      padding: 1.25rem 1.4rem;
+    }
+
+    .definition strong {
+      font-family: 'Rajdhani', sans-serif;
+      color: var(--gold-light);
+      letter-spacing: 0.04em;
+    }
+
+    .cycle-grid,
+    .review-grid,
+    .applications-grid,
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .cycle-card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 18px;
+      padding: 1.25rem;
+      position: relative;
+    }
+
+    .cycle-card b {
+      display: block;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.15rem;
+      color: #8fdcff;
+      margin-bottom: 0.6rem;
+    }
+
+    .cycle-card p {
+      color: var(--steel-light);
+      font-size: 0.94rem;
+    }
+
+    .review-card {
+      border-top: 3px solid var(--gold);
+    }
+
+    .review-promise {
+      margin-top: 1.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 1.5rem;
+    }
+
+    .review-promise strong {
+      display: block;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.35rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .applications-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .evidence-card .status {
+      margin-top: 1rem;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      font-style: italic;
     }
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 2rem;
+      align-items: start;
     }
 
-    .about-image-wrap {
+    .about-list {
+      list-style: none;
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    .about-list li {
+      color: var(--steel-light);
+      padding-left: 1.2rem;
       position: relative;
     }
 
-    .about-image-wrap img {
-      width: 100%;
-      border-radius: 2px;
-      display: block;
-    }
-
-    .about-image-badge {
-      position: absolute;
-      bottom: -1.5rem;
-      right: -1.5rem;
-      background: var(--navy);
-      border: 1px solid rgba(201, 162, 39, 0.3);
-      padding: 1.25rem 1.5rem;
-      border-radius: 2px;
-    }
-
-    .about-image-badge .badge-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.3rem;
-    }
-
-    .about-image-badge .badge-text {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .about-text p {
-      color: var(--steel-light);
-      margin-bottom: 1.25rem;
-      font-weight: 300;
-      line-height: 1.8;
-    }
-
-    .pillars {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 2rem;
-    }
-
-    .pillar {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 1rem 1.25rem;
-      background: rgba(201, 162, 39, 0.05);
-      border-left: 2px solid var(--gold);
-      border-radius: 0 2px 2px 0;
-    }
-
-    .pillar-icon {
-      flex-shrink: 0;
-      margin-top: 0.1rem;
-      color: var(--gold);
-      display: flex;
-    }
-    .pillar-icon svg { width: 1.25rem; height: 1.25rem; }
-
-    .pillar-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.2rem;
-    }
-
-    .pillar-desc {
-      font-size: 0.85rem;
-      color: var(--steel-light);
-      line-height: 1.5;
-    }
-
-    /* ── SERVICES ── */
-    #services {
-      background: var(--navy);
-    }
-
-    .services-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 4rem;
-      align-items: end;
-    }
-
-    .services-intro {
-      font-size: 1rem;
-      color: var(--steel-light);
-      font-weight: 300;
-      line-height: 1.8;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.5px;
-      background: rgba(201, 162, 39, 0.1);
-    }
-
-    .service-card {
-      background: var(--navy-mid);
-      padding: 2.5rem 2rem;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
+    .about-list li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
       background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
+      position: absolute;
+      left: 0;
+      top: 0.65rem;
     }
 
-    .service-card:hover { background: var(--navy-light); }
-    .service-card:hover::before { transform: scaleX(1); }
-
-    .service-number {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      color: var(--gold-dark);
-      margin-bottom: 1.25rem;
+    details {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 18px;
+      padding: 1rem 1.2rem;
     }
 
-    .service-icon {
-      margin-bottom: 1.25rem;
-      display: block;
-      color: var(--gold);
+    details + details {
+      margin-top: 0.85rem;
     }
-    .service-icon svg { width: 1.75rem; height: 1.75rem; }
 
-    .service-title {
+    summary {
+      cursor: pointer;
+      list-style: none;
       font-family: 'Rajdhani', sans-serif;
       font-size: 1.2rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.75rem;
-      color: var(--white);
     }
 
-    .service-desc {
-      font-size: 0.875rem;
-      color: var(--steel);
-      line-height: 1.7;
+    summary::-webkit-details-marker {
+      display: none;
     }
 
-    /* ── SBIR PHASES ── */
-    #approach {
-      background: var(--navy-mid);
-    }
-
-    .phases-wrap {
-      margin-top: 3rem;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      position: relative;
-    }
-
-    .phases-wrap::before {
-      content: '';
-      position: absolute;
-      top: 2.25rem;
-      left: calc(16.66% + 0.5rem);
-      right: calc(16.66% + 0.5rem);
-      height: 1px;
-      background: linear-gradient(90deg, var(--gold), rgba(201,162,39,0.3), var(--gold));
-      z-index: 0;
-    }
-
-    .phase-card {
-      position: relative;
-      z-index: 1;
-      padding: 0 2rem 2.5rem;
-      text-align: center;
-    }
-
-    .phase-number {
-      width: 4.5rem;
-      height: 4.5rem;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.5rem;
-      background: var(--navy-mid);
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--gold);
-    }
-
-    .phase-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .phase-funding {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-    }
-
-    .phase-desc {
-      font-size: 0.85rem;
-      color: var(--steel);
-      line-height: 1.7;
-    }
-
-    /* ── WHY US ── */
-    #why {
-      background: var(--navy);
-      position: relative;
-      overflow: hidden;
-    }
-
-    #why::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url('./Imagery/Banner Photo.jpg');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.06;
-    }
-
-    .why-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .why-card {
-      padding: 2rem;
-      border: 1px solid rgba(201, 162, 39, 0.15);
-      border-radius: 2px;
-      background: rgba(17, 24, 39, 0.7);
-      transition: border-color 0.3s;
-    }
-
-    .why-card:hover { border-color: rgba(201, 162, 39, 0.45); }
-
-    .why-card-icon {
-      margin-bottom: 1rem;
-      color: var(--gold);
-      display: flex;
-    }
-    .why-card-icon svg { width: 1.5rem; height: 1.5rem; }
-
-    .why-card-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .why-card-desc {
-      font-size: 0.875rem;
-      color: var(--steel);
-      line-height: 1.7;
-    }
-
-    /* ── CONTACT ── */
-    #contact {
-      background: var(--navy-mid);
+    details p {
+      margin-top: 0.85rem;
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 5rem;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+      gap: 2rem;
       align-items: start;
     }
 
-    .contact-info {
-      padding-top: 0.5rem;
+    .contact-panel,
+    .contact-form {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 24px;
+      padding: 1.75rem;
     }
 
     .contact-detail {
       display: flex;
-      align-items: flex-start;
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
-    .contact-detail-icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      background: rgba(201, 162, 39, 0.1);
-      border: 1px solid rgba(201, 162, 39, 0.25);
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--gold);
-    }
-    .contact-detail-icon svg { width: 1rem; height: 1rem; }
-
-    .contact-detail-label {
+    .contact-detail strong {
+      display: block;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.2rem;
+      font-size: 1.05rem;
+      margin-bottom: 0.15rem;
     }
 
-    .contact-detail-value {
-      font-size: 0.9rem;
+    .contact-detail span {
       color: var(--steel-light);
     }
 
-    .contact-detail-value a {
-      color: inherit;
-    }
-
     .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
+      display: grid;
+      gap: 1rem;
     }
 
     .form-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
     }
 
     .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
+      display: grid;
+      gap: 0.45rem;
     }
 
-    .form-group label {
+    label {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: var(--steel);
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: rgba(26, 34, 56, 0.8);
-      border: 1px solid rgba(138, 155, 176, 0.2);
-      color: var(--white);
-      padding: 0.75rem 1rem;
-      border-radius: 2px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color 0.2s;
-      -webkit-appearance: none;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--gold);
-    }
-
-    .form-group select option { background: var(--navy-mid); }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    .form-note {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-    }
-
-    .form-status {
-      min-height: 1.4rem;
-      font-size: 0.82rem;
       color: var(--steel-light);
     }
 
-    .form-status.success {
-      color: #8ad4a0;
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--white);
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
     }
 
-    .form-status.error {
-      color: #ffb4a8;
+    textarea {
+      min-height: 160px;
+      resize: vertical;
     }
 
-    /* ── FOOTER ── */
+    .form-note {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
     footer {
-      background: var(--navy);
-      border-top: 1px solid rgba(201, 162, 39, 0.15);
-      padding: 3rem 2rem;
+      border-top: 1px solid rgba(201, 162, 39, 0.2);
+      background: #0b0f18;
+      padding: 2rem 0;
     }
 
     .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
       gap: 1.5rem;
+      flex-wrap: wrap;
     }
 
     .footer-logo {
@@ -1208,638 +939,632 @@
       gap: 0.75rem;
     }
 
-    .footer-logo img { display: block; height: auto; width: clamp(180px, 20vw, 220px); max-width: 100%; opacity: 0.9; flex-shrink: 0; }
+    .footer-logo img {
+      display: block;
+      height: auto;
+      width: clamp(180px, 20vw, 220px);
+      max-width: 100%;
+      opacity: 0.9;
+      flex-shrink: 0;
+    }
 
     .footer-brand-name {
       font-family: 'Rajdhani', sans-serif;
       font-size: 1rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
-      color: var(--steel-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .footer-links {
       display: flex;
-      gap: 2rem;
       list-style: none;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .footer-links a {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dim);
       text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--gold); }
-
-    .footer-copy {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-    }
-
-    /* ── MOBILE ── */
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-
-      /* Shrink nav logo so it doesn't dominate the mobile bar */
-      .nav-logo img {
-        height: 60px;
-      }
-
-      /* Hero: auto height, flex column so stats sit naturally below content */
-      .hero {
-        height: auto;
-        min-height: 100svh;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 0;
-      }
-
-      .hero-bg {
-        background-size: cover;
-        background-position: center center;
-      }
-
-      /* Content block: centered, clears the fixed nav at top */
-      .hero-content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 6rem 1.5rem 2rem;
-        width: 100%;
-      }
-
-      /* Eyebrow: smaller text, allow graceful wrapping */
-      .hero-eyebrow {
-        font-size: 0.65rem;
-        letter-spacing: 0.18em;
-        flex-wrap: wrap;
-        row-gap: 0.25rem;
-        margin-bottom: 1rem;
-      }
-
-      /* Clamp h1 tighter for narrow screens */
-      .hero h1 {
-        font-size: clamp(2.2rem, 11vw, 3.5rem);
-        margin-bottom: 1rem;
-      }
-
-      .hero-tagline {
-        font-size: 1rem;
-        margin-bottom: 1.75rem;
-      }
-
-      /* Stack buttons full-width */
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .hero-actions .btn-primary,
-      .hero-actions .btn-ghost {
-        width: 100%;
-        text-align: center;
-      }
-
-      /* Stats: horizontal strip pinned to bottom of hero */
-      .hero-stats {
-        position: static;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        gap: 0;
-        padding: 0;
-        background: rgba(11, 14, 23, 0.75);
-        border-top: 1px solid rgba(201, 162, 39, 0.15);
-        backdrop-filter: blur(8px);
-      }
-
-      .hero-stat {
-        flex: 1;
-        min-width: 0;
-        padding: 1rem 0.75rem;
-        text-align: center;
-        border-right: 1px solid rgba(201, 162, 39, 0.12);
-      }
-
-      .hero-stat:last-child { border-right: none; }
-
-      .hero-stat .number {
-        font-size: 1.3rem;
-      }
-
-      .hero-stat .label {
-        font-size: 0.55rem;
-        letter-spacing: 0.06em;
-      }
-
-      /* Rest of page */
-      .about-grid,
-      .services-header,
-      .contact-grid,
-      .focus-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-
-      .focus-list { grid-template-columns: 1fr; gap: 1rem; }
-
-      .about-image-badge { right: 0; bottom: -1rem; }
-
-      .services-grid { grid-template-columns: 1fr; gap: 1rem; }
-
-      .phases-wrap { grid-template-columns: 1fr; }
-      .phases-wrap::before { display: none; }
-
-      .why-grid { grid-template-columns: 1fr; }
-
-      .form-row { grid-template-columns: 1fr; }
-
-      .section-panel { padding: 2rem 1.5rem; }
-
-      .footer-inner { flex-direction: column; text-align: center; }
-      .footer-links { flex-wrap: wrap; justify-content: center; }
-    }
-
-    /* Extra-small phones */
-    @media (max-width: 480px) {
-      .hero-eyebrow::before { display: none; }
-
-      .hero-stats { flex-wrap: wrap; }
-
-      .hero-stat {
-        flex: 1 1 33%;
-        padding: 0.85rem 0.5rem;
-      }
-    }
-
-    /* ── ANIMATIONS ── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Mobile nav drawer */
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      top: 72px;
-      left: 0;
-      right: 0;
-      background: rgba(11,14,23,0.98);
-      border-bottom: 1px solid rgba(201,162,39,0.2);
-      z-index: 99;
-      padding: 1.5rem 2rem;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .mobile-nav.open { display: flex; }
-
-    .mobile-nav a {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--steel-light);
-      text-decoration: none;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
+    .footer-copy {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+    }
 
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+    @media (max-width: 1100px) {
+      .hero-layout,
+      .split-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
       }
 
-      .hero-bg,
-      .hero-grid,
-      .hero-rays,
-      .hero-fog,
-      .hero-scan,
-      .hud-block,
-      .hud-readout,
-      .hud-coord,
-      .fade-in {
-        animation: none !important;
-        transform: none !important;
+      .hero-content {
+        padding-left: 0;
       }
 
-      .fade-in {
-        opacity: 1;
+      .cycle-grid,
+      .review-grid,
+      .cards-grid,
+      .applications-grid,
+      .evidence-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        padding: 0 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .mobile-nav {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        z-index: 98;
+        background: rgba(11, 14, 23, 0.97);
+        border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        padding: 1rem 1.5rem 1.25rem;
+      }
+
+      .mobile-nav.open {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .mobile-nav a {
+        font-family: 'Rajdhani', sans-serif;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--steel-light);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero-shell,
+      .section-shell,
+      .footer-inner {
+        width: min(100% - 1.5rem, 1180px);
+      }
+
+      .hero {
+        padding-top: 4.9rem;
+      }
+
+      h1 {
+        font-size: 2.3rem;
+        max-width: none;
+      }
+
+      .cards-grid,
+      .applications-grid,
+      .evidence-grid,
+      .cycle-grid,
+      .review-grid,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 4.5rem 0;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- NAV -->
-  <nav aria-label="Primary">
-    <a href="#hero" class="nav-logo">
+  <nav>
+    <a href="#hero" class="nav-logo" aria-label="Sentinel Ridge home">
       <img src="./Imagery/SentinelRidge-primary-transparent.png" alt="Sentinel Ridge" />
     </a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
+      <li><a href="#challenge">The Challenge</a></li>
       <li><a href="#approach">Approach</a></li>
-      <li><a href="#why">Why Us</a></li>
+      <li><a href="#review">The Review</a></li>
+      <li><a href="#applications">Applications</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="https://signal.sentinelridge.tech" target="_blank" rel="noreferrer">Signal</a></li>
       <li><a href="https://crm.sentinelridge.tech" target="_blank" rel="noreferrer">CRM</a></li>
-      <li><a href="#contact" class="nav-cta">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Start a Conversation</a></li>
     </ul>
-    <button
-      type="button"
-      class="hamburger"
-      id="navToggle"
-      aria-controls="mobileNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span></span><span></span><span></span>
+    <button class="hamburger" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
   </nav>
 
   <div class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
+    <a href="#challenge">The Challenge</a>
     <a href="#approach">Approach</a>
-    <a href="#why">Why Us</a>
+    <a href="#review">The Review</a>
+    <a href="#applications">Applications</a>
+    <a href="#about">About</a>
     <a href="https://signal.sentinelridge.tech" target="_blank" rel="noreferrer">Signal</a>
     <a href="https://crm.sentinelridge.tech" target="_blank" rel="noreferrer">CRM</a>
-    <a href="#contact">Contact</a>
+    <a href="#contact">Start a Conversation</a>
   </div>
 
   <main>
-  <!-- HERO -->
-  <section id="hero" class="hero">
-    <div class="hero-bg"></div>
-    <canvas class="hero-particles" id="heroCanvas"></canvas>
-    <div class="hero-grid"></div>
-    <div class="hero-rays"></div>
-    <div class="hero-fog"></div>
-    <div class="hero-scan"></div>
-    <div class="hero-overlay"></div>
+    <section id="hero" class="hero">
+      <div class="hero-bg"></div>
+      <canvas class="hero-particles" id="heroCanvas"></canvas>
+      <div class="hero-gridlines"></div>
+      <div class="hero-rays"></div>
+      <div class="hero-fog"></div>
+      <div class="hero-scan"></div>
+      <div class="hero-overlay"></div>
 
-    <!-- HUD overlays -->
-    <div class="hud-coord hud-coord-br">SENTINEL RIDGE TECHNOLOGIES · WIN WORK · DELIVER WELL</div>
+      <div class="hud-coord hud-coord-br">SENTINEL RIDGE TECHNOLOGIES · OPERATIONAL INTELLIGENCE · DELIVERY</div>
 
-    <!-- Live data readout panel -->
-    <div class="hud-readout" aria-hidden="true">
-      <div class="hud-readout-row">
-        <span class="hud-readout-key">CORE OFFERS</span>
-        <span class="hud-readout-val">2</span>
-      </div>
-      <div class="hud-readout-row">
-        <span class="hud-readout-key">YRS EXPERIENCE</span>
-        <span class="hud-readout-val">20+</span>
-      </div>
-      <div class="hud-readout-row">
-        <span class="hud-readout-key">CLIENT FOCUS</span>
-        <span class="hud-readout-val">COM + GOV</span>
-      </div>
-      <div class="hud-readout-divider"></div>
-      <div class="hud-readout-row">
-        <span class="hud-readout-key">STATUS</span>
-        <span class="hud-readout-val status-ok">ACTIVE<span class="hud-cursor"></span></span>
-      </div>
-    </div>
-
-    <div class="hero-hud" aria-hidden="true">
-      <div class="hud-block">
-        <div class="hud-tag">Operational</div>
-        <div class="hud-lines">
-          <div class="hud-line">Mission</div>
-          <div class="hud-line">Focus</div>
-          <div class="hud-line">Deliver</div>
+      <div class="hud-readout" aria-hidden="true">
+        <div class="hud-readout-row">
+          <span class="hud-readout-key">CORE OFFERS</span>
+          <span class="hud-readout-val">2</span>
+        </div>
+        <div class="hud-readout-row">
+          <span class="hud-readout-key">YRS EXPERIENCE</span>
+          <span class="hud-readout-val">20+</span>
+        </div>
+        <div class="hud-readout-row">
+          <span class="hud-readout-key">CLIENT FOCUS</span>
+          <span class="hud-readout-val">COM + GOV</span>
+        </div>
+        <div class="hud-readout-divider"></div>
+        <div class="hud-readout-row">
+          <span class="hud-readout-key">STATUS</span>
+          <span class="hud-readout-val status-ok">ACTIVE<span class="hud-cursor"></span></span>
         </div>
       </div>
-      <div class="hud-block">
-        <div class="hud-tag">Intelligence</div>
-        <div class="hud-lines">
-          <div class="hud-line">Data</div>
-          <div class="hud-line">Insight</div>
-          <div class="hud-line">Decision</div>
-          <div class="hud-line">Advantage</div>
-        </div>
-      </div>
-      <div class="hud-block">
-        <div class="hud-tag">Doctrine</div>
-        <div class="hud-lines">
-          <div class="hud-line">Clarity</div>
-          <div class="hud-line">Informs</div>
-          <div class="hud-line">Readiness</div>
-        </div>
-      </div>
-    </div>
 
-    <div class="hero-content">
-      <div class="hero-eyebrow">Small Businesses · Opportunity Capture · Delivery Confidence</div>
-      <h1>
-        Finding <span class="accent">Clarity</span><br />
-        in Complexity
-      </h1>
-      <p class="hero-tagline">
-        Sentinel Ridge helps small businesses win opportunities and execute with confidence through
-        sharper capture strategy, stronger positioning, and hands-on delivery leadership after the award.
-      </p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Start a Conversation</a>
-        <a href="https://signal.sentinelridge.tech" class="btn-ghost" target="_blank" rel="noreferrer">Explore Signal</a>
-        <a href="https://crm.sentinelridge.tech" class="btn-ghost" target="_blank" rel="noreferrer">Open CRM</a>
-      </div>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <span class="number">20+</span>
-        <span class="label">Years of Experience</span>
-      </div>
-      <div class="hero-stat">
-        <span class="number">2</span>
-        <span class="label">Core Service Offerings</span>
-      </div>
-      <div class="hero-stat">
-        <span class="number">End-to-End</span>
-        <span class="label">From Win to Delivery</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-image-wrap fade-in">
-          <img src="./Imagery/Banner Photo.jpg" alt="Sentinel Ridge Technologies" />
-          <div class="about-image-badge">
-            <div class="badge-title">Consulting & Management</div>
-            <div class="badge-text">20+ Years</div>
+      <div class="hero-hud" aria-hidden="true">
+        <div class="hud-block">
+          <div class="hud-tag">Operational</div>
+          <div class="hud-lines">
+            <div class="hud-line">Mission</div>
+            <div class="hud-line">Focus</div>
+            <div class="hud-line">Deliver</div>
           </div>
         </div>
-        <div class="about-text fade-in">
+        <div class="hud-block">
+          <div class="hud-tag">Intelligence</div>
+          <div class="hud-lines">
+            <div class="hud-line">Data</div>
+            <div class="hud-line">Insight</div>
+            <div class="hud-line">Decision</div>
+            <div class="hud-line">Advantage</div>
+          </div>
+        </div>
+        <div class="hud-block">
+          <div class="hud-tag">Doctrine</div>
+          <div class="hud-lines">
+            <div class="hud-line">Clarity</div>
+            <div class="hud-line">Informs</div>
+            <div class="hud-line">Readiness</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-shell">
+        <div class="hero-layout">
+          <div class="hero-content">
+            <div class="hero-eyebrow">Clarity Before Change</div>
+            <h1>Before you change the organization, understand the organization you <span class="accent">actually have</span>.</h1>
+            <p class="hero-tagline">
+              Sentinel Ridge helps leaders develop an evidence-based understanding of how their organizations actually operate before investing in solutions, systems, or structural change.
+            </p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn-primary">Start a Conversation</a>
+              <a href="#review" class="btn-ghost">See the Review</a>
+            </div>
+          </div>
+
+          <aside class="hero-panel" aria-label="Sentinel Ridge focus areas">
+            <div class="panel-kicker">Sentinel Ridge Focus</div>
+            <div class="signal-list">
+              <div class="signal-item">
+                <strong>Operational Intelligence</strong>
+                <span>Evidence-first understanding of how work, decisions, and value actually move.</span>
+              </div>
+              <div class="signal-item">
+                <strong>Business Operating Systems</strong>
+                <span>Clear operating rhythm, ownership, decision rights, and improvement discipline.</span>
+              </div>
+              <div class="signal-item">
+                <strong>Government &amp; Opportunity Delivery</strong>
+                <span>One application of the discipline, not the entire identity of the firm.</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="challenge" class="dark-section">
+      <div class="section-shell">
+        <div class="section-intro">
+          <div class="section-label">The Challenge</div>
+          <h2 class="section-title">Organizations rarely become difficult to lead overnight.</h2>
+          <p class="section-subtitle">
+            Complexity accumulates gradually. Processes evolve. Teams adapt. Tools multiply. What once felt manageable starts requiring more coordination, more explanation, and more interpretation just to move.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="insight-card">
+            <span class="insight-num">01</span>
+            <h3>Everyone is busy. Progress is harder to see.</h3>
+            <p>Activity expands faster than visibility, and effort starts to substitute for measurable movement.</p>
+          </article>
+          <article class="insight-card">
+            <span class="insight-num">02</span>
+            <h3>The answer changes depending on who is asked.</h3>
+            <p>Leadership, operations, finance, and delivery teams can each describe a different version of the same organization.</p>
+          </article>
+          <article class="insight-card">
+            <span class="insight-num">03</span>
+            <h3>Improvements solve symptoms, then fade.</h3>
+            <p>New tools, processes, or dashboards are introduced before the underlying operating system is fully understood.</p>
+          </article>
+          <article class="insight-card">
+            <span class="insight-num">04</span>
+            <h3>Knowledge has become a bottleneck.</h3>
+            <p>Critical work slows down when a single person is unavailable because the process still lives inside individuals.</p>
+          </article>
+          <article class="insight-card">
+            <span class="insight-num">05</span>
+            <h3>Decisions take longer than they should.</h3>
+            <p>Leaders spend too much time reconciling assumptions, definitions, and conflicting signals before they can act.</p>
+          </article>
+          <article class="insight-card">
+            <span class="insight-num">06</span>
+            <h3>Growth creates friction instead of leverage.</h3>
+            <p>The organization is adding capacity without consistently strengthening the operating capability beneath it.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="light-panel-section">
+      <div class="section-shell split-grid">
+        <div class="split-copy">
+          <div class="section-label">Why This Happens</div>
+          <h2 class="section-title">Most operational problems begin as sensible adaptations.</h2>
+          <p>
+            People do what they need to do to keep the work moving. A workaround solves today’s issue. A meeting gets added. A report gets created. A handoff becomes manual because no one had time to redesign it properly.
+          </p>
+          <p style="margin-top: 1rem;">
+            Over time, these adaptations become the operating reality, even when leadership still believes the organization works a different way.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="timeline-dot">1</div>
+            <div>
+              <strong>Adapt</strong>
+              <span>A temporary fix keeps the work moving.</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot">2</div>
+            <div>
+              <strong>Accumulate</strong>
+              <span>More exceptions, more hidden rules, more local workarounds appear.</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot">3</div>
+            <div>
+              <strong>Normalize</strong>
+              <span>The workaround becomes “how we do it,” even if nobody designed it intentionally.</span>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot">4</div>
+            <div>
+              <strong>Misread</strong>
+              <span>Leaders try to solve the wrong problem because they are acting on an incomplete picture.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cream-panel-section">
+      <div class="section-shell">
+        <div class="quote-panel">
+          <div class="section-label">Point of View</div>
+          <blockquote>
+            Do not begin with the solution. Begin with a defensible understanding of current reality.
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach" class="dark-section">
+      <div class="section-shell">
+        <div class="section-intro">
+          <div class="section-label">Our Approach</div>
+          <h2 class="section-title">We call it Operational Intelligence.</h2>
+          <p class="section-subtitle">
+            At Sentinel Ridge, Operational Intelligence is an evidence-based consulting discipline for understanding how an organization actually operates, improving it intentionally, and strengthening its ability to continue that work over time.
+          </p>
+          <div class="definition">
+            <p><strong>Working definition:</strong> Operational Intelligence is the disciplined practice of developing an evidence-based understanding of how an organization actually operates, then using that understanding to make better decisions, take purposeful action, and strengthen future capability.</p>
+          </div>
+        </div>
+
+        <div class="cycle-grid">
+          <article class="cycle-card">
+            <b>Observe</b>
+            <p>Look at how work, decisions, and value actually move, not just how they are supposed to move.</p>
+          </article>
+          <article class="cycle-card">
+            <b>Interpret</b>
+            <p>Separate observations from assumptions, clarify patterns, and explain what the evidence supports.</p>
+          </article>
+          <article class="cycle-card">
+            <b>Act</b>
+            <p>Define practical changes with clear ownership, purpose, and expected effect.</p>
+          </article>
+          <article class="cycle-card">
+            <b>Learn</b>
+            <p>Revisit the organization after change and test whether reality actually improved.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="review" class="light-panel-section">
+      <div class="section-shell">
+        <div class="section-intro">
+          <div class="section-label">Lead Offer</div>
+          <h2 class="section-title">Start with an Operational Intelligence Review.</h2>
+          <p class="section-subtitle">
+            The Review is a structured investigation, not a compliance audit and not a prepackaged recommendation. Its purpose is to establish a defensible picture of current reality and define the next achievable improvements.
+          </p>
+        </div>
+
+        <div class="review-grid">
+          <article class="review-card">
+            <h3>1. Frame</h3>
+            <p>Clarify why the Review is needed, what decision it must inform, and what is in scope.</p>
+          </article>
+          <article class="review-card">
+            <h3>2. Investigate</h3>
+            <p>Follow value from input through transformation to output. Interview leaders and the people doing the work. Review evidence.</p>
+          </article>
+          <article class="review-card">
+            <h3>3. Explain</h3>
+            <p>Separate observations from interpretations, identify patterns, and document findings with confidence levels.</p>
+          </article>
+          <article class="review-card">
+            <h3>4. Advance</h3>
+            <p>Define small, testable improvement hypotheses and the evidence that will confirm or challenge them.</p>
+          </article>
+        </div>
+
+        <div class="review-promise">
+          <strong>What the Review should produce</strong>
+          <p>A current-reality picture, evidence-based findings, priority improvement hypotheses, clearer ownership, and a practical validation plan that fits the organization instead of forcing a generic template onto it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="applications" class="dark-section">
+      <div class="section-shell">
+        <div class="section-intro">
+          <div class="section-label">Applications</div>
+          <h2 class="section-title">The discipline stays consistent. The application changes.</h2>
+          <p class="section-subtitle">
+            Sentinel Ridge applies the same evidence-first approach across multiple operating environments and leadership challenges.
+          </p>
+        </div>
+
+        <div class="applications-grid">
+          <article class="app-card">
+            <h3>Business Operating Systems</h3>
+            <p>Clarify how work, decisions, ownership, meetings, metrics, and improvement fit together.</p>
+          </article>
+          <article class="app-card">
+            <h3>Process &amp; Value Flow</h3>
+            <p>Map how value actually moves, where it waits, where it breaks, and where effort is duplicated.</p>
+          </article>
+          <article class="app-card">
+            <h3>Project, Program &amp; Portfolio Management</h3>
+            <p>Stand up or strengthen the structures needed to choose, govern, and deliver important work.</p>
+          </article>
+          <article class="app-card">
+            <h3>AI &amp; Automation</h3>
+            <p>Identify where technology improves understanding, action, or learning without automating ambiguity.</p>
+          </article>
+          <article class="app-card">
+            <h3>Decision &amp; Data Clarity</h3>
+            <p>Align definitions, measures, dashboards, and decision rights so information can actually improve judgment.</p>
+          </article>
+          <article class="app-card">
+            <h3>Government &amp; Opportunity Delivery</h3>
+            <p>Apply the same discipline to opportunity qualification, delivery structure, staffing readiness, and post-award execution.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="light-panel-section">
+      <div class="section-shell">
+        <div class="section-intro">
+          <div class="section-label">Evidence</div>
+          <h2 class="section-title">A body of work is built one case at a time.</h2>
+          <p class="section-subtitle">
+            Operational Intelligence becomes credible through real practice: investigating how organizations work, documenting what the evidence reveals, and learning from what changes next.
+          </p>
+        </div>
+
+        <div class="evidence-grid">
+          <article class="evidence-card">
+            <div class="evidence-label">Case 001</div>
+            <h3>Sentinel Ridge: The gap between what is and what could be</h3>
+            <p>The first documented case begins with Sentinel Ridge itself: the recurring gap observed across organizations, the decision to define a clearer discipline, and the work of applying it internally.</p>
+            <div class="status">The methodology begins by examining its own organization.</div>
+          </article>
+          <article class="evidence-card">
+            <div class="evidence-label">In Practice</div>
+            <h3>From observation to a better reality</h3>
+            <p>Future cases should show how an investigation moves from observed reality to findings, targeted changes, and a new reality that can be assessed again.</p>
+            <div class="status">The goal is learning that can be traced, tested, and repeated.</div>
+          </article>
+          <article class="evidence-card">
+            <div class="evidence-label">Insights</div>
+            <h3>Questions leaders are already asking</h3>
+            <p>Recurring firefighting, conflicting metrics, trapped knowledge, slow decisions, fragile growth, and improvements that do not last all point toward deeper operating questions.</p>
+            <div class="status">Each insight begins with a real operational problem.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="dark-section">
+      <div class="section-shell about-grid">
+        <div>
           <div class="section-label">About Sentinel Ridge</div>
-          <h2 class="section-title">Built for Small Businesses That Need to Win and Deliver</h2>
-          <div class="gold-rule"></div>
-          <p>
-            Sentinel Ridge was built by operators and program leaders who understand what it takes for a small business to pursue growth, win important work, and deliver it well.
+          <h2 class="section-title">Years of seeing the same gap.</h2>
+          <p class="section-subtitle">
+            Sentinel Ridge grew from years of seeing different organizations experience different symptoms while struggling with the same underlying challenge: the gap between what is happening and what leaders understand to be happening.
           </p>
-          <p>
-            We help founder-led and growing teams move from opportunity pursuit to execution with clearer strategy, practical systems, and hands-on leadership where it matters most.
+          <p style="color: var(--steel-light); margin-top: 1rem;">
+            Operational Intelligence is an effort to investigate that gap in a disciplined, repeatable way. The work is still being refined through practice. The point is not to claim a new buzzword. The point is to offer a clearer path: understand current reality honestly, improve it practically, and build internal capability that lasts.
           </p>
-          <div class="pillars">
-            <div class="pillar">
-              <span class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
-              <div>
-                <div class="pillar-title">Small-Business Practicality</div>
-                <div class="pillar-desc">We scope work around what a growing business actually needs: traction, delivery discipline, and measurable progress.</div>
-              </div>
-            </div>
-            <div class="pillar">
-              <span class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16v-5"/><path d="M11 16V8"/><path d="M15 16v-3"/><path d="M19 16V7"/></svg></span>
-              <div>
-                <div class="pillar-title">Credible Market Positioning</div>
-                <div class="pillar-desc">We help you tell a sharper story to buyers, partners, and evaluators without sounding inflated or generic.</div>
-              </div>
-            </div>
-            <div class="pillar">
-              <span class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
-              <div>
-                <div class="pillar-title">Execution That Holds Up</div>
-                <div class="pillar-desc">Winning is only the beginning. We stay close enough to help teams deliver cleanly once work is underway.</div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="container">
-      <div class="services-header">
-        <div class="fade-in">
-          <div class="section-label">What We Do</div>
-          <h2 class="section-title">Two Core Offers for Small Businesses</h2>
-        </div>
-        <p class="services-intro fade-in">
-          We keep the model simple: help small businesses win the right work, then help them deliver well once the work is live.
-        </p>
-      </div>
-      <div class="services-grid">
-        <div class="service-card fade-in">
-          <div class="service-number">01</div>
-          <span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5C17.9 10 18.5 8.1 18 6a6 6 0 0 0-11.6 2c-.4 2 .2 3.8 1.5 5C8.8 13.8 9 14.4 9 15v1h6v-1c0-.6.2-1.2.6-1.6z"/><path d="M8 21h8"/><path d="M12 21v-6"/></svg></span>
-          <div class="service-title">Win Work</div>
-          <p class="service-desc">
-            Pursue the right opportunities, sharpen your market story, strengthen proposals, and build credibility
-            with buyers, partners, and evaluators. This includes capture support, opportunity qualification,
-            SBIR positioning, and practical pre-award strategy.
-          </p>
-        </div>
-        <div class="service-card fade-in">
-          <div class="service-number">02</div>
-          <span class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="6" height="18"/><rect x="9" y="8" width="6" height="13"/><rect x="16" y="13" width="6" height="8"/></svg></span>
-          <div class="service-title">Deliver Well</div>
-          <p class="service-desc">
-            After the award or contract, we help small businesses execute with confidence through delivery leadership,
-            project and product management, staffing readiness, and lightweight systems that keep teams aligned.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW WE ENGAGE -->
-  <section id="approach">
-    <div class="container">
-      <div class="fade-in" style="max-width: 640px;">
-        <div class="section-label">How We Engage</div>
-        <h2 class="section-title">A Simple Model: Position, Win, Deliver</h2>
-        <p class="section-subtitle">
-          We keep engagements disciplined and practical so small businesses can move from uncertainty to traction without getting buried in process.
-        </p>
-      </div>
-      <div class="phases-wrap">
-        <div class="phase-card fade-in">
-          <div class="phase-number">1</div>
-          <div class="phase-title">Clarify</div>
-          <div class="phase-funding">Focus on the Right Work</div>
-          <p class="phase-desc">
-            We start by understanding your business, your offer, and the real opportunity or delivery risk before recommending next moves.
-          </p>
-        </div>
-        <div class="phase-card fade-in">
-          <div class="phase-number">2</div>
-          <div class="phase-title">Position</div>
-          <div class="phase-funding">Sharpen the Plan</div>
-          <p class="phase-desc">
-            We help you shape the story, operating approach, and support structure needed to pursue work or stabilize delivery.
-          </p>
-        </div>
-        <div class="phase-card fade-in">
-          <div class="phase-number">3</div>
-          <div class="phase-title">Deliver</div>
-          <div class="phase-funding">Execution That Holds Up</div>
-          <p class="phase-desc">
-            We stay engaged long enough to make the work real, whether that means delivery leadership, better operating rhythm, or systems that help your team keep pace.
-          </p>
-        </div>
-      </div>
-
-      <div class="fade-in section-panel">
-        <div class="focus-grid">
-          <div>
-            <div class="section-label" style="margin-bottom: 0.75rem;">Who We Help</div>
-            <h3 style="font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Best-Fit Clients</h3>
-            <p class="focus-copy">
-              We are especially useful to small businesses that need sharper positioning before the win and steadier execution after it.
-            </p>
-          </div>
-          <ul class="focus-list" aria-label="Focus areas">
-            <li class="focus-item">Founder-Led Small Businesses</li>
-            <li class="focus-item">Government &amp; SBIR Pursuers</li>
-            <li class="focus-item">Operationally Complex Teams</li>
-            <li class="focus-item">Companies Scaling After a Win</li>
+        <aside class="about-card">
+          <h3>Built from practice, not branding.</h3>
+          <p>Sentinel Ridge combines operator judgment, delivery leadership, PMO thinking, process observation, and practical improvement work.</p>
+          <ul class="about-list">
+            <li>Evidence before recommendation</li>
+            <li>Clarity before tooling</li>
+            <li>Practical improvement over abstract transformation</li>
+            <li>Capability that remains after the consultant leaves</li>
           </ul>
-        </div>
+        </aside>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WHY US -->
-  <section id="why">
-    <div class="container">
-      <div class="why-inner">
-        <div class="fade-in" style="max-width: 600px; margin: 0 auto; text-align: center; margin-bottom: 3rem;">
-          <div class="section-label" style="justify-content: center;">Why Sentinel Ridge</div>
-          <h2 class="section-title">Why Small Businesses Use Sentinel Ridge</h2>
-          <p class="section-subtitle" style="margin: 0 auto;">
-            We bring operator judgment, project and product leadership, and practical support that helps growing companies look credible and stay credible.
-          </p>
+    <section class="light-panel-section">
+      <div class="section-shell">
+        <div class="section-intro">
+          <div class="section-label">FAQ</div>
+          <h2 class="section-title">What leaders should know before starting.</h2>
         </div>
-        <div class="why-grid">
-          <div class="why-card fade-in">
-            <div class="why-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-            <div class="why-card-title">Built for Smaller Teams</div>
-            <p class="why-card-desc">
-              We understand lean teams, constrained bandwidth, and the need to prioritize what actually moves the business forward.
-            </p>
-          </div>
-          <div class="why-card fade-in">
-            <div class="why-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-            <div class="why-card-title">Operator Credibility</div>
-            <p class="why-card-desc">
-              Clients and partners need to trust that you can deliver. We help strengthen that trust with real operational and delivery discipline.
-            </p>
-          </div>
-          <div class="why-card fade-in">
-            <div class="why-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-            <div class="why-card-title">Win-to-Delivery Continuity</div>
-            <p class="why-card-desc">
-              We connect pre-award planning to post-award execution so momentum is not lost after the win.
-            </p>
-          </div>
-          <div class="why-card fade-in">
-            <div class="why-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-            <div class="why-card-title">Straight Talk</div>
-            <p class="why-card-desc">
-              We tell you what we actually think, including when to narrow scope, simplify the approach, or walk away from the wrong opportunity.
-            </p>
-          </div>
-        </div>
+
+        <details>
+          <summary>What is Operational Intelligence?</summary>
+          <p>At Sentinel Ridge, Operational Intelligence is the evolving discipline of developing an evidence-based understanding of how an organization actually operates, then using that understanding to improve decisions, action, and future capability.</p>
+        </details>
+        <details>
+          <summary>Is an Operational Intelligence Review an audit?</summary>
+          <p>No. It is an investigation. The Review does not begin with a fixed compliance standard or a predetermined solution. It follows the evidence needed to understand the issue and the value flow around it.</p>
+        </details>
+        <details>
+          <summary>What does the Review produce?</summary>
+          <p>The expected output is a documented current-reality picture, evidence-based findings, priority improvement hypotheses, clear ownership, and a validation plan. The exact artifacts should fit the investigation rather than force every client into an identical template.</p>
+        </details>
+        <details>
+          <summary>Does Sentinel Ridge implement improvements?</summary>
+          <p>Implementation support may follow the Review. The scope can include process design, PMO support, AI or automation, operating rhythms, data clarity, project leadership, and other targeted applications. The first commitment is understanding, not selling a predetermined implementation.</p>
+        </details>
+        <details>
+          <summary>Is this only for government contractors?</summary>
+          <p>No. Government and opportunity delivery remain important applications, but Sentinel Ridge is positioned around organizational understanding and business operating capability across multiple environments.</p>
+        </details>
+        <details>
+          <summary>Is this an Operational Intelligence software platform?</summary>
+          <p>No. In the software and analytics market, operational intelligence often refers to platforms that monitor systems and data in real time. At Sentinel Ridge, Operational Intelligence is an evidence-based consulting discipline for understanding how an organization actually operates, improving it intentionally, and building the internal capability to continue that work.</p>
+        </details>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info fade-in">
-          <div class="section-label">Get in Touch</div>
-          <h2 class="section-title">Let's Talk About the Work You Want to Win or Deliver</h2>
-          <div class="gold-rule"></div>
-          <p style="color: var(--steel-light); font-weight: 300; line-height: 1.8; margin-bottom: 2.5rem; font-size: 0.95rem;">
-            If you are trying to win the right opportunity, stabilize delivery after a win, or add experienced leadership without overbuilding your team, we are ready for a direct conversation about fit.
+    <section id="contact" class="dark-section">
+      <div class="section-shell contact-grid">
+        <div class="contact-panel">
+          <div class="section-label">Start the Conversation</div>
+          <h2 class="section-title">Before the next major change, take a closer look at current reality.</h2>
+          <p class="section-subtitle">
+            If your organization is growing, struggling to see clearly, or preparing for a meaningful change, Sentinel Ridge can help you understand what is actually happening before you invest in the wrong fix.
           </p>
-          <div class="contact-detail">
-            <div class="contact-detail-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div>
-              <div class="contact-detail-label">Email</div>
-              <div class="contact-detail-value"><a href="mailto:info@sentinelridge.tech">info@sentinelridge.tech</a></div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8L2 7h20l-6-4z"/></svg></div>
-            <div>
-              <div class="contact-detail-label">Company</div>
-              <div class="contact-detail-value">Sentinel Ridge Technologies LLC</div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><polyline points="14 3 14 8 19 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
-            <div>
-              <div class="contact-detail-label">Clients</div>
-              <div class="contact-detail-value">Small Business · Commercial · Government</div>
-            </div>
-          </div>
-        </div>
-        <div class="fade-in">
-          <form class="contact-form" id="contactForm" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" autocomplete="name" placeholder="Jane Smith" required />
-              </div>
-              <div class="form-group">
-                <label for="company">Company</label>
-                <input type="text" id="company" name="company" autocomplete="organization" placeholder="Acme Technologies" />
+
+          <div style="margin-top: 2rem;">
+            <div class="contact-detail">
+              <div>
+                <strong>Email</strong>
+                <span><a href="mailto:info@sentinelridge.tech">info@sentinelridge.tech</a></span>
               </div>
             </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" autocomplete="email" placeholder="jane@acmetech.com" required />
+            <div class="contact-detail">
+              <div>
+                <strong>Focus Areas</strong>
+                <span>Operational Intelligence • Business Operating Systems • PMO • AI / Automation • Government Delivery</span>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="interest">Area of Interest</label>
-              <select id="interest" name="interest">
-                <option value="">Select an area of focus...</option>
-                <option>Win Work</option>
-                <option>Deliver Well</option>
-                <option>SBIR / government support</option>
-                <option>Project / product leadership</option>
-                <option>General inquiry</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Tell Us About Your Challenge</label>
-              <textarea id="message" name="message" placeholder="Briefly describe your organization, the problem you're facing, or what you're trying to accomplish..." required></textarea>
-            </div>
-            <p class="form-note">This form opens your email client with a pre-filled message to info@sentinelridge.tech.</p>
-            <p class="form-status" id="formStatus" aria-live="polite"></p>
-            <button type="submit" class="btn-primary" style="width: 100%; text-align: center;">Draft Email</button>
-          </form>
+          </div>
         </div>
+
+        <form class="contact-form" action="mailto:info@sentinelridge.tech" method="post" enctype="text/plain">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input id="name" name="name" type="text" placeholder="Jane Smith" />
+            </div>
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input id="company" name="company" type="text" placeholder="Acme Technologies" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" placeholder="jane@acmetech.com" />
+          </div>
+          <div class="form-group">
+            <label for="interest">Area of Interest</label>
+            <select id="interest" name="interest">
+              <option>Operational Intelligence Review</option>
+              <option>Business Operating Systems</option>
+              <option>Process / Value Flow</option>
+              <option>PMO / Project Leadership</option>
+              <option>AI / Automation</option>
+              <option>Government / Opportunity Delivery</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">What’s changing?</label>
+            <textarea id="message" name="message" placeholder="Describe the challenge, decision, friction, or growth issue you want to understand more clearly."></textarea>
+          </div>
+          <p class="form-note">This is a draft document only. The form is included for layout and messaging review.</p>
+          <button type="submit" class="btn-primary">Start a Conversation</button>
+        </form>
       </div>
-    </div>
-  </section>
+    </section>
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-logo">
@@ -1850,31 +1575,28 @@
         </div>
       </div>
       <ul class="footer-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
+        <li><a href="#challenge">Challenge</a></li>
         <li><a href="#approach">Approach</a></li>
-        <li><a href="#why">Why Us</a></li>
-        <li><a href="https://signal.sentinelridge.tech" target="_blank" rel="noreferrer">Signal</a></li>
-        <li><a href="https://crm.sentinelridge.tech" target="_blank" rel="noreferrer">CRM</a></li>
+        <li><a href="#review">Review</a></li>
+        <li><a href="#applications">Applications</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <p class="footer-copy">© 2026 Sentinel Ridge Technologies LLC. All rights reserved.</p>
+      <p class="footer-copy">© 2026 Sentinel Ridge Technologies LLC. Draft repositioning page.</p>
     </div>
   </footer>
 
   <script>
-    // ── HERO CANVAS: PARTICLES + DATA STREAMS ──
     (function() {
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const canvas = document.getElementById('heroCanvas');
       if (!canvas || reduceMotion) return;
+
       const ctx = canvas.getContext('2d');
       let W, H, dusts = [], streams = [], animationFrameId = null;
 
       function rand(a, b) { return Math.random() * (b - a) + a; }
-      function randInt(a, b) { return Math.floor(rand(a, b + 1)); }
 
-      // ── Floating dust particles (gold, drift upward)
       function makeDust() {
         return {
           x: rand(0, W), y: rand(0, H),
@@ -1887,7 +1609,6 @@
         };
       }
 
-      // ── Horizontal data-stream streaks (fast, thin, blue-steel)
       function makeStream() {
         const fromRight = Math.random() > 0.5;
         return {
@@ -1896,26 +1617,25 @@
           w: rand(30, 90),
           vx: fromRight ? -rand(4, 9) : rand(4, 9),
           alpha: rand(0.12, 0.28),
-          r: rand(0, 60) / 255,   // colour tint variety
+          r: rand(0, 60) / 255,
         };
       }
 
       function init() {
-        W = canvas.width  = canvas.offsetWidth;
+        W = canvas.width = canvas.offsetWidth;
         H = canvas.height = canvas.offsetHeight;
-        dusts   = Array.from({ length: Math.floor(W * H / 7000) }, makeDust);
-        streams = Array.from({ length: 18 }, makeStream);
+        dusts = Array.from({ length: Math.floor(W * H / 5200) }, makeDust);
+        streams = Array.from({ length: 28 }, makeStream);
       }
 
       function draw() {
         ctx.clearRect(0, 0, W, H);
 
-        // data streams
         for (const s of streams) {
           const grad = ctx.createLinearGradient(s.x, 0, s.x + s.w * Math.sign(s.vx) * -1, 0);
-          grad.addColorStop(0, `rgba(${Math.round(100 + s.r*80)},${Math.round(160 + s.r*40)},220,0)`);
-          grad.addColorStop(0.5, `rgba(${Math.round(100 + s.r*80)},${Math.round(160 + s.r*40)},220,${s.alpha})`);
-          grad.addColorStop(1, `rgba(${Math.round(100 + s.r*80)},${Math.round(160 + s.r*40)},220,0)`);
+          grad.addColorStop(0, `rgba(${Math.round(100 + s.r * 80)},${Math.round(160 + s.r * 40)},220,0)`);
+          grad.addColorStop(0.5, `rgba(${Math.round(100 + s.r * 80)},${Math.round(160 + s.r * 40)},220,${s.alpha})`);
+          grad.addColorStop(1, `rgba(${Math.round(100 + s.r * 80)},${Math.round(160 + s.r * 40)},220,0)`);
           ctx.fillStyle = grad;
           ctx.fillRect(s.x, s.y - 0.5, s.w, 1);
 
@@ -1923,7 +1643,6 @@
           if (s.x > W + 100 || s.x < -100) Object.assign(s, makeStream());
         }
 
-        // dust particles
         for (const p of dusts) {
           p.alpha += p.flicker * p.fd;
           if (p.alpha > 0.5 || p.alpha < 0.05) p.fd *= -1;
@@ -1933,9 +1652,10 @@
           ctx.fillStyle = `rgba(205,182,104,${p.alpha})`;
           ctx.fill();
 
-          p.x += p.vx;  p.y += p.vy;
-          if (p.y < -4)   p.y = H + 4;
-          if (p.x < -4)   p.x = W + 4;
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.y < -4) p.y = H + 4;
+          if (p.x < -4) p.x = W + 4;
           if (p.x > W + 4) p.x = -4;
         }
 
@@ -1954,96 +1674,41 @@
           draw();
         }
       });
+
       init();
       draw();
     })();
+  </script>
 
-    // ── TYPEWRITER on HUD lines ──
+  <script>
     (function() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) return;
+
       const lines = document.querySelectorAll('.hud-line');
       lines.forEach((el, i) => {
-        setTimeout(() => {
-          el.classList.add('typed');
-        }, 950 + i * 130);
+        setTimeout(() => el.classList.add('typed'), 900 + i * 180);
       });
     })();
+  </script>
 
+  <script>
     const navToggle = document.getElementById('navToggle');
     const mobileNav = document.getElementById('mobileNav');
 
-    function setMobileNavState(isOpen) {
-      mobileNav.classList.toggle('open', isOpen);
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-    }
-
-    navToggle.addEventListener('click', () => {
-      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-      setMobileNavState(!isOpen);
-    });
-
-    mobileNav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => setMobileNavState(false));
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        setMobileNavState(false);
-      }
-    });
-
-    // Scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+    if (navToggle && mobileNav) {
+      navToggle.addEventListener('click', function() {
+        const isOpen = mobileNav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Nav background on scroll
-    const nav = document.querySelector('nav');
-    window.addEventListener('scroll', () => {
-      nav.style.background = window.scrollY > 60
-        ? 'rgba(11,14,23,0.98)'
-        : 'rgba(11,14,23,0.92)';
-    });
-
-    const contactForm = document.getElementById('contactForm');
-    const formStatus = document.getElementById('formStatus');
-
-    contactForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      if (!contactForm.reportValidity()) {
-        formStatus.textContent = 'Please complete the required fields before drafting your email.';
-        formStatus.className = 'form-status error';
-        return;
-      }
-
-      const formData = new FormData(contactForm);
-      const name = (formData.get('name') || '').toString().trim();
-      const company = (formData.get('company') || '').toString().trim();
-      const email = (formData.get('email') || '').toString().trim();
-      const interest = (formData.get('interest') || 'General inquiry').toString().trim();
-      const message = (formData.get('message') || '').toString().trim();
-      const subject = `Sentinel Ridge inquiry: ${interest}`;
-      const body = [
-        `Name: ${name}`,
-        `Company: ${company || 'Not provided'}`,
-        `Email: ${email}`,
-        `Area of Interest: ${interest || 'General inquiry'}`,
-        '',
-        'Mission / Opportunity:',
-        message
-      ].join('\n');
-
-      window.location.href = `mailto:info@sentinelridge.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      formStatus.textContent = 'Your email draft is ready. If nothing opened, email info@sentinelridge.tech directly.';
-      formStatus.className = 'form-status success';
-    });
+      mobileNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileNav.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
   </script>
 </body>
 </html>
