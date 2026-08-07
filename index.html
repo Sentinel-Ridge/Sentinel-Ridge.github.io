@@ -999,7 +999,17 @@
 
     @media (max-width: 900px) {
       nav {
-        padding: 0 1rem;
+        height: 64px;
+        padding: 0 0.95rem;
+      }
+
+      .nav-logo {
+        align-self: center;
+        padding-top: 0;
+      }
+
+      .nav-logo img {
+        height: 58px;
       }
 
       .nav-links {
@@ -1012,13 +1022,13 @@
 
       .mobile-nav {
         position: fixed;
-        top: 72px;
+        top: 64px;
         left: 0;
         right: 0;
         z-index: 98;
         background: rgba(11, 14, 23, 0.97);
         border-bottom: 1px solid rgba(201, 162, 39, 0.2);
-        padding: 1rem 1.5rem 1.25rem;
+        padding: 1rem 1.1rem 1.15rem;
       }
 
       .mobile-nav.open {
@@ -1033,22 +1043,118 @@
         letter-spacing: 0.08em;
         color: var(--steel-light);
       }
+
+      .hero {
+        min-height: auto;
+        align-items: flex-start;
+        padding: 5.5rem 0 3.25rem;
+      }
+
+      .hero-bg {
+        background-size: cover;
+        background-position: 62% center;
+      }
+
+      .hero-layout,
+      .split-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-layout {
+        gap: 1.25rem;
+      }
+
+      .hero-content {
+        max-width: none;
+        padding-left: 0;
+      }
+
+      .hero-panel {
+        margin-top: 0.35rem;
+      }
+
+      .cycle-grid,
+      .review-grid,
+      .cards-grid,
+      .applications-grid,
+      .evidence-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 700px) {
       .hero-shell,
       .section-shell,
       .footer-inner {
-        width: min(100% - 1.5rem, 1180px);
+        width: min(100% - 1.25rem, 1180px);
       }
 
       .hero {
-        padding-top: 4.9rem;
+        padding: 5rem 0 2.8rem;
+      }
+
+      .hero-eyebrow,
+      .section-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        margin-bottom: 1rem;
       }
 
       h1 {
-        font-size: 2.3rem;
+        font-size: 2.05rem;
         max-width: none;
+        text-align: left;
+        line-height: 1.02;
+      }
+
+      .hero-tagline {
+        max-width: none;
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-primary,
+      .btn-ghost {
+        width: 100%;
+      }
+
+      .hero-panel,
+      .about-card,
+      .contact-panel,
+      .contact-form,
+      .insight-card,
+      .app-card,
+      .evidence-card,
+      .review-card,
+      .faq-card {
+        padding: 1.15rem;
+      }
+
+      .panel-kicker {
+        margin-bottom: 0.9rem;
+      }
+
+      .signal-item strong {
+        font-size: 0.95rem;
+      }
+
+      .signal-item span,
+      .section-subtitle,
+      .contact-detail span,
+      .footer-copy {
+        font-size: 0.96rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        line-height: 1.04;
       }
 
       .cards-grid,
@@ -1061,12 +1167,18 @@
       }
 
       section {
-        padding: 4.5rem 0;
+        padding: 4rem 0;
       }
 
       .footer-inner {
         align-items: flex-start;
         flex-direction: column;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.7rem;
       }
     }
   </style>
